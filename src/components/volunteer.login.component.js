@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Form, Button, Row, Col } from "react-bootstrap";
 import "./styles.css";
 
-export default class Login extends Component {
+export default class VolunteerLogin extends Component {
   render() {
     return (
       <div
