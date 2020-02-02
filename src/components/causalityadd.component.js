@@ -22,27 +22,32 @@ export default class CausalityAdd extends Component {
     this.setState({
       location: e.target.value
     });
+    // console.log(e.target.value);
   }
 
   onChangeUrgency(e) {
     this.setState({
       urgency: e.target.value
     });
+    // console.log(e.target.value);
   }
 
   onChangeType(e) {
     this.setState({
       type: e.target.value
     });
+    // console.log(e.target.value);
   }
 
   onChangeServiceRequired(e) {
     this.setState({
       service_required: e.target.value
     });
+    // console.log(e.target.value);
   }
 
   onSubmitForm(e) {
+    console.log("object");
     e.preventDefault();
     const causality = {
       location: this.state.location,
@@ -53,7 +58,7 @@ export default class CausalityAdd extends Component {
 
     console.log(causality);
 
-    window.location = "/admin";
+    window.location = "/admin-home";
   }
 
   render() {

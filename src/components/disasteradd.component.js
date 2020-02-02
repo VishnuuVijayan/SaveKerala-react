@@ -110,7 +110,7 @@ export default class DisasterAdd extends Component {
 
     console.log(disaster);
 
-    window.location = "/";
+    window.location = "/admin-home";
   };
 
   render() {
