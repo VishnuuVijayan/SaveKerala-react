@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class CausalityAdd extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class CausalityAdd extends Component {
 
     this.state = {
       location: "",
-      urgency: 0,
+      urgency: "",
       type: "",
       service_required: ""
     };
@@ -57,6 +58,10 @@ export default class CausalityAdd extends Component {
     };
 
     console.log(causality);
+
+    axios
+      .post("http://localhost:5000/causality/add", causality)
+      .then(res => console.log(res.body));
 
     window.location = "/admin-home";
   }

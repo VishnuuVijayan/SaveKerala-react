@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class DisasterAdd extends Component {
@@ -8,19 +9,21 @@ export default class DisasterAdd extends Component {
 
     this.onChangeDisasterID = this.onChangeDisasterID.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
+    this.onChangeDisasterType = this.onChangeDisasterType.bind(this);
     this.onChangeDisaster_edate = this.onChangeDisaster_edate.bind(this);
     this.onChangeDisaster_sdate = this.onChangeDisaster_sdate.bind(this);
     this.onChangeDuration = this.onChangeDuration.bind(this);
     this.onChangeSeverity = this.onChangeSeverity.bind(this);
     this.onChangeSpanArea = this.onChangeSpanArea.bind(this);
     this.onChangePeopleAffected = this.onChangePeopleAffected.bind(this);
-    this.onChangeLastEdited = this.onChangeLastEdited.bind(this);
+    // this.onChangeLastEdited = this.onChangeLastEdited.bind(this);
     this.onChangeisactive = this.onChangeisactive.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       disasterid: undefined,
       location: undefined,
+      disaster_type: undefined,
       disaster_sdate: new Date(),
       disaster_edate: new Date(),
       duration: undefined,
@@ -28,7 +31,7 @@ export default class DisasterAdd extends Component {
       people_affected: undefined,
       span_area: undefined,
       last_edited: new Date(),
-      isactive: false
+      is_active: false
     };
   }
 
@@ -41,6 +44,12 @@ export default class DisasterAdd extends Component {
   onChangeLocation(e) {
     this.setState({
       location: e.target.value
+    });
+  }
+
+  onChangeDisasterType(e) {
+    this.setState({
+      disaster_type: e.target.value
     });
   }
 
@@ -58,33 +67,33 @@ export default class DisasterAdd extends Component {
 
   onChangeSeverity(e) {
     this.setState({
-      disasterid: e.target.value
+      severity: e.target.value
     });
   }
 
   onChangeDuration(e) {
     this.setState({
-      disasterid: e.target.value
+      duration: e.target.value
     });
   }
 
   onChangePeopleAffected(e) {
     this.setState({
-      disasterid: e.target.value
+      people_affected: e.target.value
     });
   }
 
   onChangeSpanArea(e) {
     this.setState({
-      disasterid: e.target.value
+      span_area: e.target.value
     });
   }
 
-  onChangeLastEdited(date) {
-    this.setState({
-      last_edited: date
-    });
-  }
+  // onChangeLastEdited(date) {
+  //   this.setState({
+  //     last_edited: date
+  //   });
+  // }
 
   onChangeisactive(e) {
     this.setState({
@@ -99,16 +108,23 @@ export default class DisasterAdd extends Component {
     const disaster = {
       disasterid: this.state.disasterid,
       location: this.state.location,
+      disaster_type: this.state.disaster_type,
       disaster_sdate: this.state.disaster_sdate,
       disaster_edate: this.state.disaster_edate,
       duration: this.state.duration,
       severity: this.state.severity,
       people_affected: this.state.people_affected,
       span_area: this.state.span_area,
-      last_edited: this.state.last_edited
+      is_active: true,
+      imgsrc: "123"
+      // last_edited: this.state.last_edited
     };
 
     console.log(disaster);
+
+    axios
+      .post("http://localhost:5000/disaster/add", disaster)
+      .then(res => console.log(res.data));
 
     window.location = "/admin-home";
   };
@@ -135,6 +151,15 @@ export default class DisasterAdd extends Component {
                 className="form-control"
                 value={this.state.location}
                 onChange={this.onChangeLocation}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label> Disaster Type</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.disaster_type}
+                onChange={this.onChangeDisasterType}
               />
             </div>
             <div className="form-group m-3">
@@ -190,10 +215,19 @@ export default class DisasterAdd extends Component {
                 onChange={this.onChangeSpanArea}
               />
             </div>
+            {/* <div className="form-group m-3">
+              <label> IS ACTIVE</label>
+              <input
+                type="number"
+                className="form-control"
+                value={this.state.isactive}
+                onChange={this}
+              />
+            </div> */}
             <div className="form-group m-3">
               <input
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-primary text-uppercase"
                 value="Add Disaster"
               />
             </div>
