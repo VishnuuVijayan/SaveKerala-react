@@ -11,10 +11,10 @@ export default class CausalityAdd extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
 
     this.state = {
-      location: undefined,
+      location: "",
       urgency: 0,
-      type: undefined,
-      service_required: undefined
+      type: "",
+      service_required: ""
     };
   }
 
