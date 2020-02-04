@@ -8,6 +8,7 @@ export default class DisasterAdd extends Component {
     super(props);
 
     this.onChangeDisasterID = this.onChangeDisasterID.bind(this);
+    this.onChangeimage = this.onChangeimage.bind(this);
     this.onChangeDisasterName = this.onChangeDisasterName.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onChangeDisasterType = this.onChangeDisasterType.bind(this);
@@ -21,6 +22,7 @@ export default class DisasterAdd extends Component {
     this.onChangeisactive = this.onChangeisactive.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
+
     this.state = {
       disasterid: "",
       disaster_name: "",
@@ -33,8 +35,21 @@ export default class DisasterAdd extends Component {
       people_affected: "",
       span_area: "",
       last_edited: new Date(),
-      is_active: false
+      is_active: false,
+      imgsrc: ""
     };
+  }
+
+  onChangeimage(e) {
+    this.setState({
+      imgsrc: e.target.value
+    });
+  }
+
+  onChangeDisasterID(e) {
+    this.setState({
+      disasterid: e.target.value
+    });
   }
 
   onChangeDisasterID(e) {
@@ -98,12 +113,6 @@ export default class DisasterAdd extends Component {
     });
   }
 
-  // onChangeLastEdited(date) {
-  //   this.setState({
-  //     last_edited: date
-  //   });
-  // }
-
   onChangeisactive(e) {
     this.setState({
       isactive: e.target.value
@@ -126,7 +135,7 @@ export default class DisasterAdd extends Component {
       people_affected: this.state.people_affected,
       span_area: this.state.span_area,
       is_active: true,
-      imgsrc: "123"
+      imgsrc: this.state.imgsrc
       // last_edited: this.state.last_edited
     };
 
@@ -232,6 +241,15 @@ export default class DisasterAdd extends Component {
                 className="form-control"
                 value={this.state.span_area}
                 onChange={this.onChangeSpanArea}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label>Image</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.imgsrc}
+                onChange={this.onChangeimage}
               />
             </div>
             {/* <div className="form-group m-3">
