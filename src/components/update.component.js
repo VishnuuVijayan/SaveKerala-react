@@ -21,7 +21,6 @@ export default class Update extends Component {
       }
     });
   }
-
   onSubmit = e => {
     window.location = "/";
   };
