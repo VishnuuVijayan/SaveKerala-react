@@ -6,6 +6,8 @@ const disasterSchema = new Schema(
   {
     disasterid: { type: String, unique: true, trim: true },
     disaster_name: { type: String, unique: true, trim: true },
+    slug: { type: String, trim: true },
+    description: { type: String, trim: true },
     location: { type: String, trim: true, required: true },
     disaster_type: { type: String, trim: true, required: true },
     disaster_sdate: { type: Date, required: true },

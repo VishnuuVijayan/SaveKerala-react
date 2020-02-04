@@ -8,6 +8,8 @@ export default class DisasterAdd extends Component {
     super(props);
 
     this.onChangeDisasterID = this.onChangeDisasterID.bind(this);
+    this.onChangeDisasterSlug = this.onChangeDisasterSlug.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeimage = this.onChangeimage.bind(this);
     this.onChangeDisasterName = this.onChangeDisasterName.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
@@ -22,10 +24,11 @@ export default class DisasterAdd extends Component {
     this.onChangeisactive = this.onChangeisactive.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-
     this.state = {
       disasterid: "",
       disaster_name: "",
+      slug: "",
+      description: "",
       location: "",
       disaster_type: "",
       disaster_sdate: new Date(),
@@ -43,6 +46,18 @@ export default class DisasterAdd extends Component {
   onChangeimage(e) {
     this.setState({
       imgsrc: e.target.value
+    });
+  }
+
+  onChangeDescription(e) {
+    this.setState({
+      description: e.target.value
+    });
+  }
+
+  onChangeDisasterSlug(e) {
+    this.setState({
+      slug: e.target.value
     });
   }
 
@@ -125,6 +140,8 @@ export default class DisasterAdd extends Component {
 
     const disaster = {
       disasterid: this.state.disasterid,
+      description: this.state.description,
+      slug: this.state.slug,
       disaster_name: this.state.disaster_name,
       location: this.state.location,
       disaster_type: this.state.disaster_type,
@@ -136,7 +153,6 @@ export default class DisasterAdd extends Component {
       span_area: this.state.span_area,
       is_active: true,
       imgsrc: this.state.imgsrc
-      // last_edited: this.state.last_edited
     };
 
     console.log(disaster);
@@ -170,6 +186,24 @@ export default class DisasterAdd extends Component {
                 className="form-control"
                 value={this.state.disaster_name}
                 onChange={this.onChangeDisasterName}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label> Slug</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.slug}
+                onChange={this.onChangeDisasterSlug}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label> description</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.description}
+                onChange={this.onChangeDescription}
               />
             </div>
             <div className="form-group m-3">
