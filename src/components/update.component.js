@@ -5,10 +5,18 @@ export default class Update extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChangeDisasterName = this.onChangeDisasterName.bind(this);
 
     this.state = {
-      disasters: []
+      disasters: [],
+      disastername: ""
     };
+  }
+
+  onChangeDisasterName(e) {
+    this.setState({
+      disastername: e.target.value
+    });
   }
 
   componentDidMount() {
@@ -16,7 +24,7 @@ export default class Update extends Component {
       if (response.data.length > 0) {
         this.setState({
           disasters: response.data.map(disaster => disaster.disaster_name),
-          disaster_name: response.data[0].disaster_name
+          disastername: response.data[0].disaster_name
         });
       }
     });
@@ -42,13 +50,12 @@ export default class Update extends Component {
                 ref="disasterInput"
                 required
                 className="form-control"
-                value={this.state.disasters}
-                onChange={this.state.onChangeDisasters}
+                value={this.state.disaster_name}
+                onChange={this.state.onChangeDisasterName}
               >
                 {this.state.disasters.map(function(disaster) {
                   return (
                     <option key={disaster} value={disaster}>
-                      {" "}
                       {disaster}
                     </option>
                   );

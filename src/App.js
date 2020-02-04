@@ -12,6 +12,7 @@ import CausalityAdd from "./components/causalityadd.component";
 import Update from "./components/update.component";
 import AdminLogin from "./components/adminlogin.component";
 import UserLogin from "./components/userlogin.component";
+import Details from "./components/disasterdetails.component";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Navbar />
         <Route path="/" exact component={Home} />
+        <Route path="/disasterDetails" exact component={Details} />
         <Route path="/login" exact component={UserLogin} />
         <Route path="/user-login" exact component={VolunteerLogin} />
         <Route path="/officer-login" exact component={OfficerLogin} />

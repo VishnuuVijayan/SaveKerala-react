@@ -30,6 +30,7 @@ export default class Home extends Component {
       <div>
         <Carousel>
           {this.state.disasters.map(function(disaster) {
+            const name = disaster.disaster_name;
             return (
               <Carousel.Item>
                 <div className="container">
@@ -40,16 +41,24 @@ export default class Home extends Component {
                     alt="First slide"
                   />
                 </div>
-                <Carousel.Caption>
-                  <h3> {disaster.disaster_name}</h3>
-                  <p>{disaster.slug}</p>
-                </Carousel.Caption>
+                //{" "}
+                <Link
+                  to={{
+                    pathname: "/disasterdetails"
+                    // state = {data: name}
+                  }}
+                >
+                  <Carousel.Caption>
+                    <h3> {disaster.disaster_name}</h3>
+                    <p>{disaster.slug}</p>
+                  </Carousel.Caption>
+                  //{" "}
+                </Link>
               </Carousel.Item>
             );
           })}
         </Carousel>
       </div>
-      // </div>
     );
   }
 }
