@@ -8,7 +8,8 @@ Router.route("/").get((req, res) => {
 });
 
 Router.route("/add").post((req, res) => {
-  const disasterid = Number(req.body.disasterid);
+  const disasterid = req.body.disasterid;
+  const disaster_name = req.body.disaster_name;
   const location = req.body.location;
   const disaster_type = req.body.disaster_type;
   const disaster_sdate = Date.parse(req.body.disaster_sdate);
@@ -22,6 +23,7 @@ Router.route("/add").post((req, res) => {
 
   const newDisaster = new Disaster({
     disasterid,
+    disaster_name,
     location,
     disaster_type,
     disaster_sdate,

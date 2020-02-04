@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const disasterSchema = new Schema(
   {
-    disasterid: { type: Number, unique: true, trim: true, maxlength: 4 },
+    disasterid: { type: String, unique: true, trim: true },
+    disaster_name: { type: String, unique: true, trim: true },
     location: { type: String, trim: true, required: true },
     disaster_type: { type: String, trim: true, required: true },
     disaster_sdate: { type: Date, required: true },

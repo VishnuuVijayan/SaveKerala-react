@@ -8,6 +8,7 @@ export default class DisasterAdd extends Component {
     super(props);
 
     this.onChangeDisasterID = this.onChangeDisasterID.bind(this);
+    this.onChangeDisasterName = this.onChangeDisasterName.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onChangeDisasterType = this.onChangeDisasterType.bind(this);
     this.onChangeDisaster_edate = this.onChangeDisaster_edate.bind(this);
@@ -21,15 +22,16 @@ export default class DisasterAdd extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      disasterid: undefined,
-      location: undefined,
-      disaster_type: undefined,
+      disasterid: "",
+      disaster_name: "",
+      location: "",
+      disaster_type: "",
       disaster_sdate: new Date(),
       disaster_edate: new Date(),
-      duration: undefined,
-      severity: undefined,
-      people_affected: undefined,
-      span_area: undefined,
+      duration: "",
+      severity: "",
+      people_affected: "",
+      span_area: "",
       last_edited: new Date(),
       is_active: false
     };
@@ -39,6 +41,13 @@ export default class DisasterAdd extends Component {
     this.setState({
       disasterid: e.target.value
     });
+  }
+
+  onChangeDisasterName(e) {
+    this.setState({
+      disaster_name: e.target.value
+    });
+    console.log(e.target.value);
   }
 
   onChangeLocation(e) {
@@ -107,6 +116,7 @@ export default class DisasterAdd extends Component {
 
     const disaster = {
       disasterid: this.state.disasterid,
+      disaster_name: this.state.disaster_name,
       location: this.state.location,
       disaster_type: this.state.disaster_type,
       disaster_sdate: this.state.disaster_sdate,
@@ -136,12 +146,21 @@ export default class DisasterAdd extends Component {
           <h3 className="m-2">Create New Disaster</h3>
           <form onSubmit={this.onSubmit}>
             <div className="form-group m-3">
-              <label> Disaster ID</label>
+              <label> Disaster Record Number</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 value={this.state.disasterid}
                 onChange={this.onChangeDisasterID}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label> Disaster Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.disaster_name}
+                onChange={this.onChangeDisasterName}
               />
             </div>
             <div className="form-group m-3">
