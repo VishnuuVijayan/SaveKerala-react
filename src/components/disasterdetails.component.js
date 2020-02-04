@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 
 export default class Details extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: this.state.location
-    };
-  }
-
   componentDidMount() {
-    // console.log(this.state.data);
+    // console.log(this.props.location.state);
+    const data = this.props.location;
+    console.log(data.data);
   }
   render() {
     return <div> hi </div>;

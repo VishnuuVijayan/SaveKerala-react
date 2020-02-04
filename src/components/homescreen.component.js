@@ -44,8 +44,8 @@ export default class Home extends Component {
                 //{" "}
                 <Link
                   to={{
-                    pathname: "/disasterdetails"
-                    // state = {data: name}
+                    pathname: "/disasterdetails",
+                    data: name
                   }}
                 >
                   <Carousel.Caption>

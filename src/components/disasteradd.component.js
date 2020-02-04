@@ -67,12 +67,6 @@ export default class DisasterAdd extends Component {
     });
   }
 
-  onChangeDisasterID(e) {
-    this.setState({
-      disasterid: e.target.value
-    });
-  }
-
   onChangeDisasterName(e) {
     this.setState({
       disaster_name: e.target.value
