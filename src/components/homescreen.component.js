@@ -8,16 +8,6 @@ export default class Home extends Component {
     this.state = { disasters: [], images: [] };
   }
   componentDidMount() {
-    // axios.get("http://localhost:5000/disaster/").then(response => {
-    //   if (response.data.length > 0) {
-    //     this.setState({
-    //       disasters: response.data.map(disaster => disaster.disaster_name),
-    //       // images: response.data.map(image => image.imgsrc),
-    //       disaster_name: response.data[0].disaster_name,
-    //       imgsrc: response.data[0].imgsrc
-    //     });
-    //   }
-    // });
     this.getData();
   }
 
@@ -34,24 +24,6 @@ export default class Home extends Component {
       });
   };
 
-  // displayData = (disasters) => {
-  //     if(!disasters.length) return null;
-
-  //     return disasters.map((disaster,index)=> {
-  //       <Carousel.Item key = {index}>
-  //       <img
-  //         className="d-block w-100"
-  //         src={disaster.imgsrc}
-  //         alt="First slide"
-  //       />
-  //       <Carousel.Caption>
-  //         <h3> {disaster.disaster_name}</h3>
-  //       </Carousel.Caption>
-  //     </Carousel.Item>
-  //     })
-  //   };
-
-  // };
   render() {
     return (
       <div>
