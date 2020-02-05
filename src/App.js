@@ -13,6 +13,7 @@ import Update from "./components/update.component";
 import AdminLogin from "./components/adminlogin.component";
 import UserLogin from "./components/userlogin.component";
 import Details from "./components/disasterdetails.component";
+import UpdateDetails from "./components/updatedetails.component";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route path="/admin-home" exact component={Adminhome} />
         <Route path="/admin/add-disaster" exact component={DisasterAdd} />
         <Route path="/admin/causality-add" exact component={CausalityAdd} />
-        <Route path="/admin/update-details" exact component={Update} />
+        <Route path="/admin/update" exact component={Update} />
+        <Route path="/admin/update-details" exact component={UpdateDetails} />
       </Router>
     </div>
   );

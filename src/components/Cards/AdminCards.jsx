@@ -24,7 +24,7 @@ export default function TwoCards() {
           <Cards
             title="Update Details"
             imgsrc="https://www.shareicon.net/data/2015/09/22/644537_arrow_512x512.png"
-            btnRoute="/admin/update-details"
+            btnRoute="/admin/update"
           />
         </div>
       </div>

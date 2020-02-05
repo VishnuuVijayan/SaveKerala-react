@@ -30,7 +30,7 @@ export default class Update extends Component {
     });
   }
   onSubmit = e => {
-    window.location = "/";
+    window.location = "/admin-home";
   };
 
   render() {
@@ -64,6 +64,7 @@ export default class Update extends Component {
             </div>
             <div className="form-group m-3">
               <input
+                // href="update-details"
                 type="submit"
                 className="btn btn-outline-success text-uppercase"
                 value="Update Disaster Details"

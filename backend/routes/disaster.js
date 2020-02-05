@@ -7,6 +7,12 @@ Router.route("/").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+Router.route("/:id").get((req, res, err) => {
+  Disaster.findById(req.params.id)
+    .then(disaster => res.json(disaster))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 Router.route("/add").post((req, res) => {
   const disasterid = req.body.disasterid;
   const disaster_name = req.body.disaster_name;
