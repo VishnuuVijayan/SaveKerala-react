@@ -4,13 +4,9 @@ import { Link } from "react-router-dom";
 export default class Signup extends Component {
   render() {
     return (
-      <div
-        style={{
-          margin: 125
-        }}
-      >
+      <div>
         <div className="auth-wrapper">
-          <div className="auth-inner">
+          <div className="auth-inner col-sm-4">
             <form>
               <h3>Sign Up</h3>
 
