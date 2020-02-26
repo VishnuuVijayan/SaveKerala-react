@@ -162,7 +162,7 @@ export default class DisasterAdd extends Component {
     return (
       <div style={{ backgroundColor: "#fff" }}>
         <div className="container">
-          <h3 className="m-2">Create New Disaster</h3>
+          <h3 className="m-2">Add New Disaster</h3>
           <form onSubmit={this.onSubmit}>
             <div className="form-group m-3">
               <label> Disaster Record Number</label>
