@@ -30,7 +30,7 @@ export default class Home extends Component {
       <div>
         <Carousel>
           {this.state.disasters.map(function(disaster) {
-            const name = disaster._id;
+            const id = disaster._id;
             return (
               <Carousel.Item>
                 <div className="container">
@@ -44,7 +44,7 @@ export default class Home extends Component {
                 <Link
                   to={{
                     pathname: "/disasterdetails/",
-                    data: name
+                    data: id
                   }}
                 >
                   <Carousel.Caption>

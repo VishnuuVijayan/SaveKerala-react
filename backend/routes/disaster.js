@@ -7,10 +7,38 @@ Router.route("/").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+Router.route("/:name").get((req, res) => {
+  const query = { disaster_name: req.params.name };
+  Disaster.find(query)
+    .then(disasters => res.json(disasters))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 Router.route("/:id").get((req, res, err) => {
-  Disaster.findById(req.params.id)
+  Disaster.findById(req.body.id)
     .then(disaster => res.json(disaster))
     .catch(err => res.status(400).json("Error: " + err));
+});
+
+Router.route("/update/:id").post((req, res, err) => {
+  Disaster.findById(req.params.id)
+    .then(disaster => {
+      disaster.description = req.body.description;
+      disaster.disaster_edate = Date.parse(req.body.disaster_edate);
+      // disaster.description = req.body.description;
+      disaster.duration = Number(req.body.duration);
+      disaster.severity = Number(req.body.severity);
+      disaster.people_affected = Number(req.body.people_affected);
+      disaster.span_area = Number(req.body.span_area);
+      disaster.imgsrc = req.body.imgsrc;
+      disaster.is_active = Boolean(req.body.is_active);
+
+      disaster
+        .save()
+        .then(() => res.json("Disaster Updated!"))
+        .catch(err => res.status(400).json("Error : " + err));
+    })
+    .catch(err => res.status(400).json("Error:" + err));
 });
 
 Router.route("/add").post((req, res) => {

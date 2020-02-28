@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class Update extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
     this.onChangeDisasterName = this.onChangeDisasterName.bind(this);
-
+    // this.setDisasterID = this.setDisasterID.bind(this);
+    // this.findDisasterID = this.findDisasterID.bind(this);
+    // this.x = this.x.bind(this);
     this.state = {
       disasters: [],
-      disastername: ""
+      disastername: "",
+      disaster_id: ""
     };
   }
 
@@ -19,21 +23,61 @@ export default class Update extends Component {
     });
   }
 
+  // setDisasterID(id) {
+  //   this.setState({
+  //     disaster_id: id
+  //   });
+  //   // console.log(this.state.disaster_id);
+  // }
+
+  // findDisasterID = state => {
+  //   // const x = data.length;
+  //   for (let i = 0; i < this.state.disasters.length; i++) {
+  //     // console.log(this.state.disasters.length);
+  //     // console.log(this.state.disasters[i].disaster_name);
+  //     if (this.state.disasters[i].disaster_name === this.state.disastername) {
+  //       const x = this.state.disasters[i]._id;
+  //       // console.log(x);
+  //       // this.setState({
+  //       //   disaster_id: x
+  //       // });
+  //       console.log(x);
+  //       this.setDisasterID(x);
+  //     }
+  //   }
+  // };
+
+  // onSubmit = (e, disasterOut) => {
+  //   window.location = "/";
+  //   console.log(disasterOut);
+  // };
+
   componentDidMount() {
     axios.get("http://localhost:5000/disaster/").then(response => {
       if (response.data.length > 0) {
+        const data = response.data;
         this.setState({
-          disasters: response.data.map(disaster => disaster.disaster_name),
-          disastername: response.data[0].disaster_name
+          disasters: data
         });
+        this.setState({
+          disastername: data[0].disaster_name
+        });
+        // this.setState({
+        //   disaster_id: data[0]._id
+        // });
       }
     });
   }
-  onSubmit = e => {
-    window.location = "/admin-home";
+
+  onSubmit = (e, state) => {
+    e.preventDefault();
+    // window.location = "/admin/update-details";
+    // console.log(this.state.disastername);
   };
 
   render() {
+    // this.setDisasterID = this.setDisasterID.bind(this);
+
     return (
       <div
         style={{
@@ -50,25 +94,37 @@ export default class Update extends Component {
                 ref="disasterInput"
                 required
                 className="form-control"
-                value={this.state.disaster_name}
-                onChange={this.state.onChangeDisasterName}
+                value={this.state.disastername}
+                onChange={this.onChangeDisasterName}
               >
                 {this.state.disasters.map(function(disaster) {
+                  // let id = disaster._id;
+                  // this.props.setDisasterID(id);
                   return (
-                    <option key={disaster} value={disaster}>
-                      {disaster}
+                    <option
+                      key={disaster.disaster_name}
+                      value={disaster.disaster_name}
+                    >
+                      {disaster.disaster_name}
                     </option>
                   );
                 })}
               </select>
             </div>
             <div className="form-group m-3">
-              <input
-                // href="update-details"
-                type="submit"
-                className="btn btn-outline-success text-uppercase"
-                value="Update Disaster Details"
-              />
+              <Link
+                to={{
+                  pathname: "/admin/update-details/",
+                  data: this.state.disastername
+                }}
+              >
+                <input
+                  onClick={this.findDisasterID}
+                  type="submit"
+                  className="btn btn-outline-success text-uppercase"
+                  value="Update Disaster Details"
+                />
+              </Link>
             </div>
           </form>
         </div>
