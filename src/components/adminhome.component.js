@@ -7,6 +7,7 @@ export default class Adminhome extends Component {
     return (
       <div className="container-fluid d-flex justify-content-center">
         <AdminCards />
+        {/* <AdminCards /> */}
       </div>
     );
   }

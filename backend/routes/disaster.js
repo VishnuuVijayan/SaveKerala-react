@@ -20,6 +20,13 @@ Router.route("/:id").get((req, res, err) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+// Router.route("/activedisasters").get((req, res) => {
+//   const query = { is_active: true };
+//   Disaster.find(query)
+//     .then(disasters => res.json(disasters))
+//     .catch(err => res.status(400).json("Error: " + err));
+// });
+
 Router.route("/update/:id").post((req, res, err) => {
   Disaster.findById(req.params.id)
     .then(disaster => {

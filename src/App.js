@@ -14,6 +14,7 @@ import AdminLogin from "./components/adminlogin.component";
 import UserLogin from "./components/userlogin.component";
 import Details from "./components/disasterdetails.component";
 import UpdateDetails from "./components/updatedetails.component";
+import AddSecretary from "./components/addsecretary.component";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/admin/causality-add" exact component={CausalityAdd} />
         <Route path="/admin/update" exact component={Update} />
         <Route path="/admin/update-details" exact component={UpdateDetails} />
+        <Route path="/secretary" exact component={AddSecretary} />
       </Router>
     </div>
   );
