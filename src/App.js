@@ -15,6 +15,7 @@ import UserLogin from "./components/userlogin.component";
 import Details from "./components/disasterdetails.component";
 import UpdateDetails from "./components/updatedetails.component";
 import AddSecretary from "./components/addsecretary.component";
+import EditAuth from "./components/editauthorities.component";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/admin/update" exact component={Update} />
         <Route path="/admin/update-details" exact component={UpdateDetails} />
         <Route path="/secretary" exact component={AddSecretary} />
+        <Route path="/admin/edit-auth" exact component={EditAuth} />
       </Router>
     </div>
   );

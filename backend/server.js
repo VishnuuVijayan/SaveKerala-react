@@ -25,9 +25,11 @@ connection.once("open", () => {
 const disasterRouter = require("./routes/disaster");
 const causalityRouter = require("./routes/causality");
 const secretaryRouter = require("./routes/secretary");
+const collector_listRouter = require("./routes/collector_list");
 app.use("/disaster", disasterRouter);
 app.use("/causality", causalityRouter);
 app.use("/secretary", secretaryRouter);
+app.use("/collector-list", collector_listRouter);
 
 app.listen(port, () => {
   console.log("Server is running at port 5000");
