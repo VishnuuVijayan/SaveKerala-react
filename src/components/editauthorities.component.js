@@ -33,7 +33,7 @@ export default class EditAuth extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault():
+        e.preventDefault();
 
     }
     render() {
