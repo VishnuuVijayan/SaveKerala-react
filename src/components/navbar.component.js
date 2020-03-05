@@ -5,6 +5,12 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 export default class NavbarD extends Component {
   render() {
     return (
+      <div>
+        <header class="bg-primary text-center py-2 ">
+  <div class="container">
+    <h1 class="font-weight-light text-white">Disaster Management Portal</h1>
+  </div>
+</header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">Disaster Management Portal</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -34,6 +40,7 @@ export default class NavbarD extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </div>
     );
   }
 }
