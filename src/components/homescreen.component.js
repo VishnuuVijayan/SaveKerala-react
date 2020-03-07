@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Carousel } from "react-bootstrap";
+import { Carousel,Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Cards from './Cards/Cards'
 
 export default class Home extends Component {
   constructor(props) {
@@ -27,7 +28,9 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{backgroundColor:'#eeeff1'}}>
+      <div className = "row mt-3">
+        <div className = "col-9">
         <Carousel>
           {this.state.disasters.map(function(disaster) {
             const id = disaster._id;
@@ -56,6 +59,71 @@ export default class Home extends Component {
             );
           })}
         </Carousel>
+        </div>
+<div className="text-center" style={{backgroundColor:'#fff',height:400,width:350}}>News & Events
+
+</div>
+
+
+<div className='d-inline-flex mx-5 ml-2'>
+    <div className="col-3 mx-2 card text-center">
+      <div className="overflow">
+        {/* <img
+          className="card-img-top"
+          style={{ width: 250, height: 250 }}
+          alt="helo"
+          src={props.imgsrc}
+        /> */}
+      </div>
+      <div className="card-body text-dark">
+        <h4 className="card-title"> ctfvghbnj</h4>
+        <p className="card-text text-secondary">afsgdhfhgfdsfghfd</p>
+</div>
+</div>
+    <div className="col-3 mx-2 card text-center">
+      <div className="overflow">
+        {/* <img
+          className="card-img-top"
+          style={{ width: 250, height: 250 }}
+          alt="hello"
+          src={props.imgsrc}
+        /> */}
+      </div>
+      <div className="card-body text-dark">
+        <h4 className="card-title"> ctfvghbnj</h4>
+        <p className="card-text text-secondary">afsgdhfhgfdsfghfd</p>
+</div>
+</div>
+    <div className="col-3 mx-2 card text-center">
+      <div className="overflow">
+        {/* <img
+          className="card-img-top"
+          style={{ width: 250, height: 250 }}
+          alt="hello"
+          src={props.imgsrc}
+        /> */}
+      </div>
+      <div className="card-body text-dark">
+        <h4 className="card-title"> ctfvghbnj</h4>
+        <p className="card-text text-secondary">afsgdhfhgfdsfghfd</p>
+</div>
+</div>
+    <div className="col-3 mx-2 card text-center">
+      <div className="overflow">
+        {/* <img
+          className="card-img-top"
+          style={{ width: 250, height: 250 }}
+          alt="hello"
+          src={props.imgsrc}
+        /> */}
+      </div>
+      <div className="card-body text-dark">
+        <h4 className="card-title"> ctfvghbnj</h4>
+        <p className="card-text text-secondary">afsgdhfhgfdsfghfd</p>
+</div>
+</div>
+  </div>
+  </div>
       </div>
     );
   }
