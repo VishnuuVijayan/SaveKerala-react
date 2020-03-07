@@ -26,10 +26,12 @@ const disasterRouter = require("./routes/disaster");
 const causalityRouter = require("./routes/causality");
 const secretaryRouter = require("./routes/secretary");
 const collector_listRouter = require("./routes/collector_list");
+const tahsildar_listRouter = require("./routes/tahsildar_list");
 app.use("/disaster", disasterRouter);
 app.use("/causality", causalityRouter);
 app.use("/secretary", secretaryRouter);
-app.use("/collector-list", collector_listRouter);
+app.use("/collectorlist", collector_listRouter);
+app.use("/tahsildarlist", tahsildar_listRouter);
 
 app.listen(port, () => {
   console.log("Server is running at port 5000");

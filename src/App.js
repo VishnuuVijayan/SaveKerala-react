@@ -15,7 +15,11 @@ import UserLogin from "./components/userlogin.component";
 import Details from "./components/disasterdetails.component";
 import UpdateDetails from "./components/updatedetails.component";
 import AddSecretary from "./components/addsecretary.component";
-import EditAuth from "./components/editauthorities.component";
+import EditCollector from "./components/editCollector.component";
+import UpdateCollector from "./components/updatecollector.component";
+import AuthCards from "./components/Cards/AuthCards";
+import UpdateTahsildar from "./components/updateTahsildar.component";
+import UpdateTahsildarTwo from "./components/updatetahsildar2.component";
 
 function App() {
   return (
@@ -35,7 +39,23 @@ function App() {
         <Route path="/admin/update" exact component={Update} />
         <Route path="/admin/update-details" exact component={UpdateDetails} />
         <Route path="/secretary" exact component={AddSecretary} />
-        <Route path="/admin/edit-auth" exact component={EditAuth} />
+        <Route path="/admin/update-collector" exact component={EditCollector} />
+        <Route path="/admin/auth-cards" exact component={AuthCards} />
+        <Route
+          path="/admin/update-tahsildar"
+          exact
+          component={UpdateTahsildar}
+        />
+        <Route
+          path="/admin/update-tahsildar/update"
+          exact
+          component={UpdateTahsildarTwo}
+        />
+        <Route
+          path="/admin/update-collector/update"
+          exact
+          component={UpdateCollector}
+        />
       </Router>
     </div>
   );

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { runInThisContext } from "vm";
-const querystring = require("querystring");
+// import { runInThisContext } from "vm";
+// const querystring = require("querystring");
 
 // const data = this.props.location;
 // const id = data.data;

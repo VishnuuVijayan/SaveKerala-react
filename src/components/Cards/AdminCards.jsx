@@ -33,7 +33,7 @@ export default function TwoCards() {
           <Cards
             title="Edit Authorities"
             imgsrc="https://cdn1.iconfinder.com/data/icons/emergency-and-disaster-management-color/64/damage-disaster-attack-harm-ruin-512.png"
-            btnRoute="/admin/edit-auth"
+            btnRoute="/admin/auth-cards"
           />
         </div>
         {/* <div className="col-md-4">
