@@ -3,6 +3,7 @@ const Router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const auth = require("../middleware/auth");
 
 const secret = process.env.jwtSecret;
 
@@ -14,7 +15,7 @@ let User = require("../models/userslist.model");
 //     .catch(err => res.status(400).json("Error: " + err));
 // });
 
-Router.route("/").post((req, res, err) => {
+Router.post("/", (req, res, err) => {
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {
@@ -46,6 +47,12 @@ Router.route("/").post((req, res, err) => {
       );
     });
   });
+});
+
+Router.get("/user", auth, (req, res) => {
+  User.findById(req.user.id)
+    .select("-password")
+    .then(user => res.json(user));
 });
 
 //   newUser

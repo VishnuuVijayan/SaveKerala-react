@@ -1,20 +1,20 @@
 const Router = require("express").Router();
 let Disaster = require("../models/disasteradd.model");
 
-Router.route("/").get((req, res) => {
+Router.get("/", (req, res) => {
   Disaster.find()
     .then(disasters => res.json(disasters))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
-Router.route("/:name").get((req, res) => {
+Router.get("/:name", (req, res) => {
   const query = { disaster_name: req.params.name };
   Disaster.find(query)
     .then(disasters => res.json(disasters))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
-Router.route("/:id").get((req, res, err) => {
+Router.get("/:id", (req, res, err) => {
   Disaster.findById(req.body.id)
     .then(disaster => res.json(disaster))
     .catch(err => res.status(400).json("Error: " + err));
@@ -27,7 +27,7 @@ Router.route("/:id").get((req, res, err) => {
 //     .catch(err => res.status(400).json("Error: " + err));
 // });
 
-Router.route("/update/:id").post((req, res, err) => {
+Router.post("/update/:id", (req, res, err) => {
   Disaster.findById(req.params.id)
     .then(disaster => {
       disaster.description = req.body.description;
@@ -48,7 +48,7 @@ Router.route("/update/:id").post((req, res, err) => {
     .catch(err => res.status(400).json("Error:" + err));
 });
 
-Router.route("/add").post((req, res) => {
+Router.post("/add", (req, res) => {
   const disasterid = req.body.disasterid;
   const disaster_name = req.body.disaster_name;
   const slug = req.body.slug;
