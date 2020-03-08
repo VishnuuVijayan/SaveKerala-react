@@ -15,7 +15,7 @@ let User = require("../models/userslist.model");
 //     .catch(err => res.status(400).json("Error: " + err));
 // });
 
-Router.post("/", (req, res, err) => {
+Router.post("/add", (req, res, err) => {
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {
@@ -49,10 +49,11 @@ Router.post("/", (req, res, err) => {
   });
 });
 
-Router.get("/user", auth, (req, res) => {
+Router.get("/user", auth, (req, res, err) => {
   User.findById(req.user.id)
     .select("-password")
     .then(user => res.json(user));
+  // .catch(err => res.status(400).json({ msg: e.message }));
 });
 
 //   newUser
