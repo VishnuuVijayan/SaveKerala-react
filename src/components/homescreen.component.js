@@ -111,7 +111,7 @@ export default function HomeScreen() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image="https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
