@@ -66,7 +66,7 @@ export default function HomeScreen() {
     }
   }));
   const classes = useStyles();
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const cards = [{key : 1, heading : "Heading1",content:"content1",btnRoute : "#1",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRdDKjSwRrt5x32IrcOAIhGTNP_yMTXIENwSKg1a2hcj9IhpTxi" },{key : 1, heading : "Heading1",content:"content1fghjkl",btnRoute : "#1"}];
   return (
     <React.Fragment>
       <CssBaseline />
@@ -107,21 +107,23 @@ export default function HomeScreen() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card.key} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
+                    // image="https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
                     title="Image title"
+                    image={card.image}
+
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.heading}
                     </Typography>
-                    <Typography>Contents </Typography>
+                    <Typography>{card.content} </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" onpress={card.btnRoute} color="primary">
                       View
                     </Button>
                   </CardActions>

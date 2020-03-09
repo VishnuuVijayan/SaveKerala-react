@@ -6,9 +6,10 @@ export default class NavbarD extends Component {
   render() {
     return (
       <div>
-        <header class="bg-primary text-center py-2 ">
-  <div class="container">
-    <h1 class="font-weight-light text-white">Disaster Management Portal</h1>
+        <header className="text-center py-2 " style={{backgroundColor:"#000"}}>
+
+  <div className="container">
+    <h1 className="font-weight-light text-white">Disaster Management Portal</h1>
   </div>
 </header>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
