@@ -15,7 +15,7 @@ let User = require("../models/userslist.model");
 //     .catch(err => res.status(400).json("Error: " + err));
 // });
 
-Router.post("/add", (req, res, err) => {
+Router.post("/", (req, res, err) => {
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {

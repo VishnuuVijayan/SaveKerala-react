@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../actions/authActions";
-import { Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
+import { clearErrors } from "../actions/errorActions";
 class Signup extends Component {
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    register: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -14,20 +21,23 @@ class Signup extends Component {
       password: "",
       msg: null
     };
+
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    // this.showAlert = this.showAlert.bind(this);
   }
-  static ProprTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired
-  };
+  // }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   onSubmit(e) {
+    // this.props.clearErrors;
     e.preventDefault();
     const { first_name, last_name, email, password } = this.state;
 
@@ -37,8 +47,24 @@ class Signup extends Component {
       email,
       password
     };
-
     this.props.register(newUser);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props;
+    if (error !== prevProps.error) {
+      if (error.id === "REGISTER_FAIL") {
+        this.setState({
+          msg: error.msg.msg
+        });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+
+    if (isAuthenticated) {
+      window.location = "/";
+    }
   }
 
   render() {
@@ -48,6 +74,9 @@ class Signup extends Component {
           <div className="auth-inner col-sm-6">
             <form onSubmit={this.onSubmit}>
               <h3>Sign Up</h3>
+              {this.state.msg ? (
+                <Alert variant="danger">{this.state.msg}</Alert>
+              ) : null}
               <div className="form-group">
                 <label>First name</label>
                 <input
@@ -162,4 +191,4 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect(mapStateToProps, { register })(Signup);
+export default connect(mapStateToProps, { register, clearErrors })(Signup);

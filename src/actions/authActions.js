@@ -16,7 +16,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("http://loaclhost:5000/auth/user", tokenConfig(getState))
+    .get("http://localhost:5000/auth/user", tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -48,19 +48,65 @@ export const register = ({
 
   const body = JSON.stringify({ first_name, last_name, email, password });
 
-  axios.post("http://localhost:5000/users/add", body, config).then(res =>
-    dispatch({
-      type: REGISTER_SUCCESS,
-      payload: res.data
-    }).catch(err => {
-      dispatch(
-        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
-      );
+  axios
+    .post("http://localhost:5000/users/add", body, config)
+    .then(res => {
+      if (res.data) {
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data
+        });
+      }
+    })
+    .catch(err => {
+      if (err.response && err.response.data) {
+        dispatch(
+          returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+        );
+      }
+
       dispatch({
         type: REGISTER_FAIL
       });
+    });
+};
+
+export const login = ({ email, password }) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  axios
+    .post("http://localhost:5000/auth/", body, config)
+    .then(res => {
+      if (res.data) {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data
+        });
+      }
     })
-  );
+    .catch(err => {
+      if (err.response && err.response.data) {
+        dispatch(
+          returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
+        );
+      }
+
+      dispatch({
+        type: LOGIN_FAIL
+      });
+    });
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS
+  };
 };
 
 export const tokenConfig = getState => {
@@ -68,7 +114,7 @@ export const tokenConfig = getState => {
 
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      "Content-type": "application/json"
     }
   };
 
