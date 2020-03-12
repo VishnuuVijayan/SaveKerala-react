@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 // import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, FormText } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -17,10 +17,13 @@ class NavbarD extends Component {
     const authLinks = (
       <Fragment>
         <Nav.Item>
-          <span className="navbar-text mr-3">
+          <span className="navbar-text mr-1">
             <strong>{user ? `Welcome ${user.first_name}` : ""}</strong>
           </span>
         </Nav.Item>
+        <Nav.Link href="add-volunteer-details">
+          Register as a Volunteer
+        </Nav.Link>
         <Logout />
       </Fragment>
     );

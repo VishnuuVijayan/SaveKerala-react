@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -6,7 +7,6 @@ import { loadUser } from "./actions/authActions";
 
 import Navbar from "./components/navbar.component";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import VolunteerLogin from "./components/volunteer.login.component";
 import OfficerLogin from "./components/officer.login.component";
 import Signup from "./components/signup.component";
