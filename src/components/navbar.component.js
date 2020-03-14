@@ -35,9 +35,9 @@ class NavbarD extends Component {
             <strong>{user ? `Welcome ${user.first_name}` : ""}</strong>
           </span>
         </Nav.Item>
-        <Nav.Link href="add-volunteer-details">
+        {/* <Nav.Link href="add-volunteer-details">
           Register as a Volunteer
-        </Nav.Link>
+        </Nav.Link> */}
         <Logout />
       </Fragment>
     );
