@@ -7,7 +7,11 @@ import {
   LOGIN_FAIL,
   REGISTER_FAIL,
   LOGIN_SUCCESS,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  ADMIN_LOGIN,
+  ADMIN_LOGOUT,
+  ADMIN_LOADED,
+  ADMIN_LOADING
 } from "./types";
 
 import { returnErrors } from "./errorActions";
@@ -17,12 +21,21 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get("http://localhost:5000/auth/user", tokenConfig(getState))
-    .then(res =>
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data
-      })
-    )
+    .then(res => {
+      console.log(res.data);
+      if (res.data.email === "admin") {
+        dispatch({
+          type: ADMIN_LOADED,
+          payload: res.data
+        });
+      } else {
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data
+        });
+        // console.log(res.data);
+      }
+    })
     .catch(err => {
       if (err.response && err.response.data) {
         dispatch(returnErrors(err.response.data, err.response.status));
@@ -84,10 +97,17 @@ export const login = ({ email, password }) => dispatch => {
     .post("http://localhost:5000/auth/", body, config)
     .then(res => {
       if (res.data) {
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: res.data
-        });
+        if (res.data.email === "admin") {
+          dispatch({
+            type: ADMIN_LOGIN,
+            payload: res.data
+          });
+        } else {
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+          });
+        }
       }
     })
     .catch(err => {
@@ -109,6 +129,44 @@ export const logout = () => {
   };
 };
 
+// export const adminlogin = ({ username, password } = dispatch => {
+
+// });
+
+export const adminlogin = ({ email, password }) => dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  if (email === "admin" && password === "admin") {
+    axios
+      .post("http://localhost:5000/auth/", body, config)
+      .then(res => {
+        if (res.data) {
+          dispatch({
+            type: ADMIN_LOGIN,
+            payload: res.data
+          });
+        }
+      })
+      .catch(err => {
+        if (err.response && err.response.data) {
+          dispatch(
+            returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
+          );
+        }
+
+        dispatch({
+          type: LOGIN_FAIL
+        });
+      });
+  }
+};
+
 export const tokenConfig = getState => {
   const token = getState().auth.token;
 
@@ -123,4 +181,10 @@ export const tokenConfig = getState => {
   }
 
   return config;
+};
+
+export const adminlogout = () => {
+  return {
+    type: ADMIN_LOGOUT
+  };
 };

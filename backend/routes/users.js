@@ -43,7 +43,7 @@ Router.route("/add").post((req, res, err) => {
             // last_name: user.last_name
           },
           process.env.jwtSecret,
-          { expiresIn: 3600 },
+          // { expiresIn: 3600 },
           (err, token) => {
             if (err) throw err;
             res.json({

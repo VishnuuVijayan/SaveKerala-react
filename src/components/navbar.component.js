@@ -12,9 +12,23 @@ class NavbarD extends Component {
     auth: PropTypes.object.isRequired
   };
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user, isAdminAuthenticated } = this.props.auth;
 
     const authLinks = (
+      <Fragment>
+        <Nav.Item>
+          <span className="navbar-text mr-1">
+            <strong>{user ? `Welcome ${user.first_name}` : ""}</strong>
+          </span>
+        </Nav.Item>
+        <Nav.Link href="add-volunteer-details">
+          Register as a Volunteer
+        </Nav.Link>
+        <Logout />
+      </Fragment>
+    );
+
+    const adminLinks = (
       <Fragment>
         <Nav.Item>
           <span className="navbar-text mr-1">
@@ -72,7 +86,13 @@ class NavbarD extends Component {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Nav>{isAuthenticated ? authLinks : guestLinks}</Nav>
+            <Nav>
+              {isAuthenticated
+                ? authLinks
+                : isAdminAuthenticated
+                ? adminLinks
+                : guestLinks}
+            </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
