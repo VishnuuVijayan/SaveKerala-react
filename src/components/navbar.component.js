@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import Logout from "../components/logout.component";
 
-class NavbarD extends Component {
+class NavbarUser extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired
   };
@@ -32,7 +32,7 @@ class NavbarD extends Component {
       <Fragment>
         <Nav.Item>
           <span className="navbar-text mr-1">
-            <strong>{user ? `Welcome ${user.first_name}` : ""}</strong>
+            <strong>{user ? `Welcome Admin` : ""}</strong>
           </span>
         </Nav.Item>
         {/* <Nav.Link href="add-volunteer-details">
@@ -104,4 +104,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(NavbarD);
+export default connect(mapStateToProps, null)(NavbarUser);
