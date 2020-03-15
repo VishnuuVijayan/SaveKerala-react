@@ -54,7 +54,7 @@ class NavbarUser extends Component {
     );
 
     return (
-      <div>
+      <div className="w-100">
         <header
           className="text-center py-2 "
           style={{ backgroundColor: "#000" }}
