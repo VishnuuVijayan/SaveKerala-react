@@ -2,42 +2,8 @@ import React, { Component, useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Modal, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
-
-function ModalOn(props) {
-  const [show, setShow] = useState(true);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-  return (
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          window.location = "/admin";
-        }}
-      >
-        <Modal.Title>Authentication Error</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        You should have admin privileges to view this page
-      </Modal.Body>
-      <Modal.Footer>
-        {/* <Button variant="secondary" onClick={}>
-        Close
-      </Button> */}
-        <Button
-          variant="primary"
-          onClick={() => {
-            window.location = "/admin";
-          }}
-        >
-          Login
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+import Modal from "./modal";
 
 class Content extends React.Component {
   constructor(props) {
@@ -89,8 +55,6 @@ class Content extends React.Component {
                 onChange={this.onChangeDistrict}
               >
                 {this.state.collector_list.map(function(collector_list) {
-                  // let id = disaster._id;
-                  // this.props.setDisasterID(id);
                   return (
                     <option
                       key={collector_list.district}
@@ -130,7 +94,7 @@ class EditCollector extends Component {
   };
   render() {
     const { isAdminAuthenticated } = this.props.auth;
-    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+    return <div>{isAdminAuthenticated ? <Content /> : <Modal />}</div>;
   }
 }
 

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Cards from "./Cards";
+import Modal from "../modal";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-export default class AuthCards extends Component {
+class Content extends React.Component {
   render() {
     return (
       <div className="container">
@@ -32,3 +35,19 @@ export default class AuthCards extends Component {
     );
   }
 }
+
+class AuthCards extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  render() {
+    const { isAdminAuthenticated } = this.props.auth;
+    return <div>{isAdminAuthenticated ? <Content /> : <Modal />}</div>;
+  }
+}
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(AuthCards);

@@ -4,8 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
-import { Modal, Button } from "react-bootstrap";
-
+import Modal from "./modal";
 class DisasterAdd extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired
@@ -13,42 +12,8 @@ class DisasterAdd extends Component {
 
   render() {
     const { isAdminAuthenticated } = this.props.auth;
-    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+    return <div>{isAdminAuthenticated ? <Content /> : <Modal />}</div>;
   }
-}
-
-function ModalOn(props) {
-  const [show, setShow] = useState(true);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-  return (
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header
-        closeButton
-        onClick={() => {
-          window.location = "/admin";
-        }}
-      >
-        <Modal.Title>Authentication Error</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        You should have admin privileges to view this page
-      </Modal.Body>
-      <Modal.Footer>
-        {/* <Button variant="secondary" onClick={}>
-        Close
-      </Button> */}
-        <Button
-          variant="primary"
-          onClick={() => {
-            window.location = "/admin";
-          }}
-        >
-          Login
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
 }
 
 class Content extends React.Component {
