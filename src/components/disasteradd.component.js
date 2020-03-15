@@ -1,9 +1,57 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
+import { Modal, Button } from "react-bootstrap";
 
-export default class DisasterAdd extends Component {
+class DisasterAdd extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+
+  render() {
+    const { isAdminAuthenticated } = this.props.auth;
+    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+  }
+}
+
+function ModalOn(props) {
+  const [show, setShow] = useState(true);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          window.location = "/admin";
+        }}
+      >
+        <Modal.Title>Authentication Error</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        You should have admin privileges to view this page
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button variant="secondary" onClick={}>
+        Close
+      </Button> */}
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location = "/admin";
+          }}
+        >
+          Login
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class Content extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,7 +87,8 @@ export default class DisasterAdd extends Component {
       span_area: "",
       last_edited: new Date(),
       is_active: false,
-      imgsrc: ""
+      imgsrc: "",
+      modalToggle: true
     };
   }
 
@@ -157,148 +206,147 @@ export default class DisasterAdd extends Component {
 
     window.location = "/admin-home";
   };
-
   render() {
     return (
-      <div style={{ backgroundColor: "#fff" }}>
-        <div className="container">
-          <h3 className="m-2">Add New Disaster</h3>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group m-3">
-              <label> Disaster Record Number</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disasterid}
-                onChange={this.onChangeDisasterID}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster Name</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disaster_name}
-                onChange={this.onChangeDisasterName}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Slug</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.slug}
-                onChange={this.onChangeDisasterSlug}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> description</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster Location</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.location}
-                onChange={this.onChangeLocation}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster Type</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disaster_type}
-                onChange={this.onChangeDisasterType}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster Start Date </label>
-              <DatePicker
-                className="form-control m-2"
-                selected={this.state.disaster_sdate}
-                onChange={this.onChangeDisaster_sdate}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster End Date </label>
-              <DatePicker
-                className="form-control m-2"
-                selected={this.state.disaster_edate}
-                onChange={this.onChangeDisaster_edate}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Disaster duration</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.duration}
-                onChange={this.onChangeDuration}
-              />
-            </div>
+      <div>
+        <div style={{ backgroundColor: "#fff" }}>
+          <div className="container">
+            <h3 className="m-2">Add New Disaster</h3>
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group m-3">
+                <label> Disaster Record Number</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.disasterid}
+                  onChange={this.onChangeDisasterID}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.disaster_name}
+                  onChange={this.onChangeDisasterName}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Slug</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.slug}
+                  onChange={this.onChangeDisasterSlug}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.description}
+                  onChange={this.onChangeDescription}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster Location</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.location}
+                  onChange={this.onChangeLocation}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster Type</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.disaster_type}
+                  onChange={this.onChangeDisasterType}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster Start Date </label>
+                <DatePicker
+                  className="form-control m-2"
+                  selected={this.state.disaster_sdate}
+                  onChange={this.onChangeDisaster_sdate}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster End Date </label>
+                <DatePicker
+                  className="form-control m-2"
+                  selected={this.state.disaster_edate}
+                  onChange={this.onChangeDisaster_edate}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Disaster duration</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  value={this.state.duration}
+                  onChange={this.onChangeDuration}
+                />
+              </div>
 
-            <div className="form-group m-3">
-              <label>Severity Level</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.severity}
-                onChange={this.onChangeSeverity}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Approximate number of people affected</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.people_affected}
-                onChange={this.onChangePeopleAffected}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label> Span Area</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.span_area}
-                onChange={this.onChangeSpanArea}
-              />
-            </div>
-            <div className="form-group m-3">
-              <label>Image</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.imgsrc}
-                onChange={this.onChangeimage}
-              />
-            </div>
-            {/* <div className="form-group m-3">
-              <label> IS ACTIVE</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.isactive}
-                onChange={this}
-              />
-            </div> */}
-            <div className="form-group m-3">
-              <input
-                type="submit"
-                className="btn btn-primary text-uppercase"
-                value="Add Disaster"
-              />
-            </div>
-          </form>
+              <div className="form-group m-3">
+                <label>Severity Level</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  value={this.state.severity}
+                  onChange={this.onChangeSeverity}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Approximate number of people affected</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  value={this.state.people_affected}
+                  onChange={this.onChangePeopleAffected}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label> Span Area</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  value={this.state.span_area}
+                  onChange={this.onChangeSpanArea}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label>Image</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.imgsrc}
+                  onChange={this.onChangeimage}
+                />
+              </div>
+              <div className="form-group m-3">
+                <input
+                  type="submit"
+                  className="btn btn-primary text-uppercase"
+                  value="Add Disaster"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+  // error: state.error
+});
+
+export default connect(mapStateToProps, null)(DisasterAdd);

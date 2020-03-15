@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import { runInThisContext } from "vm";
-// const querystring = require("querystring");
+import { Button, Modal } from "react-bootstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-// const data = this.props.location;
-// const id = data.data;
-// console.log(id);
-export default class UpdateDetails extends Component {
+class Content extends React.Component {
   constructor(props) {
     super(props);
 
@@ -135,45 +133,13 @@ export default class UpdateDetails extends Component {
     });
   }
   render() {
-    // console.log(this.state.disaster.disaster_sdate);
-    // const date = new Date(this.state.disaster.disaster_sdate);
-    // console.log(date);
     return (
       <div style={{ backgroundColor: "#fff" }}>
-        {/* <div style={{ backgroundColor: "#fff" }}> */}
         <div className="container">
           <h3 className="m-2">
             Update Disaster : {this.state.disaster.disaster_name}
           </h3>
           <form onSubmit={this.onSubmit}>
-            {/* <div className="form-group m-3">
-              <label> Disaster Record Number</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disaster.disasterid}
-                // onChange={this.onChangeDisasterID}
-              />
-            </div> */}
-            {/* <div className="form-group m-3">
-              <label> Disaster Name</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disaster.disaster_name}
-                // onChange={this.onChangeDisasterName}
-                readOnly
-              />
-            </div> */}
-            {/* <div className="form-group m-3">
-              <label> Slug</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.slug}
-                onChange={this.onChangeDisasterSlug}
-              />
-            </div> */}
             <div className="form-group m-3">
               <label> Description</label>
               <input
@@ -183,33 +149,6 @@ export default class UpdateDetails extends Component {
                 onChange={this.onChangeDescription}
               />
             </div>
-            {/* <div className="form-group m-3">
-              <label> Disaster Location</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.location}
-                onChange={this.onChangeLocation}
-              />
-            </div> */}
-            {/* <div className="form-group m-3">
-              <label> Disaster Type</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.disaster_type}
-                onChange={this.onChangeDisasterType}
-              />
-            </div> */}
-            {/* <div className="form-group m-3">
-              <label> Disaster Start Date </label>
-              <DatePicker
-                className="form-control m-2"
-                selected={date}
-                // onChange={this.onChangeDisaster_sdate}
-                readOnly
-              />
-            </div> */}
             <div className="form-group m-3">
               <label> Disaster End Date </label>
               <DatePicker
@@ -276,15 +215,6 @@ export default class UpdateDetails extends Component {
                 />
               </label>
             </div>
-            {/* <div className="form-group m-3">
-              <label> IS ACTIVE</label>
-              <input
-                type="number"
-                className="form-control"
-                value={this.state.isactive}
-                onChange={this}
-              />
-            </div> */}
             <div className="form-group m-3">
               <input
                 type="submit"
@@ -294,8 +224,57 @@ export default class UpdateDetails extends Component {
             </div>
           </form>
         </div>
-        {/* </div> */}
       </div>
     );
   }
 }
+
+function ModalOn(props) {
+  const [show, setShow] = useState(true);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          window.location = "/admin";
+        }}
+      >
+        <Modal.Title>Authentication Error</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        You should have admin privileges to view this page
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button variant="secondary" onClick={}>
+        Close
+      </Button> */}
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location = "/admin";
+          }}
+        >
+          Login
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class UpdateDetails extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  render() {
+    const { isAdminAuthenticated } = this.props.auth;
+    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+  }
+}
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(UpdateDetails);

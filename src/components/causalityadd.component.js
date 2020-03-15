@@ -1,7 +1,54 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
+import { Modal, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-export default class CausalityAdd extends Component {
+class CausalityAdd extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  render() {
+    const { isAdminAuthenticated } = this.props.auth;
+    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+  }
+}
+
+function ModalOn(props) {
+  const [show, setShow] = useState(true);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          window.location = "/admin";
+        }}
+      >
+        <Modal.Title>Authentication Error</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        You should have admin privileges to view this page
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button variant="secondary" onClick={}>
+        Close
+      </Button> */}
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location = "/admin";
+          }}
+        >
+          Login
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class Content extends React.Component {
   constructor(props) {
     super(props);
 
@@ -117,3 +164,10 @@ export default class CausalityAdd extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+  // error: state.error
+});
+
+export default connect(mapStateToProps, null)(CausalityAdd);

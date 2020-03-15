@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default class Update extends Component {
+class Content extends React.Component {
   constructor(props) {
     super(props);
     // this.onSubmit = this.onSubmit.bind(this);
@@ -74,10 +77,7 @@ export default class Update extends Component {
     // window.location = "/admin/update-details";
     // console.log(this.state.disastername);
   };
-
   render() {
-    // this.setDisasterID = this.setDisasterID.bind(this);
-
     return (
       <div
         style={{
@@ -132,3 +132,53 @@ export default class Update extends Component {
     );
   }
 }
+
+function ModalOn(props) {
+  const [show, setShow] = useState(true);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header
+        closeButton
+        onClick={() => {
+          window.location = "/admin";
+        }}
+      >
+        <Modal.Title>Authentication Error</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        You should have admin privileges to view this page
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button variant="secondary" onClick={}>
+        Close
+      </Button> */}
+        <Button
+          variant="primary"
+          onClick={() => {
+            window.location = "/admin";
+          }}
+        >
+          Login
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class Update extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  render() {
+    const { isAdminAuthenticated } = this.props.auth;
+    return <div>{isAdminAuthenticated ? <Content /> : <ModalOn />}</div>;
+  }
+}
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, null)(Update);
