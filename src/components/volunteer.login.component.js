@@ -192,13 +192,13 @@ function SignInSide(props) {
     clearErrors: PropTypes.func.isRequired
   };
 
-  useEffect(() => {
-    const { isAuthenticated } = props;
-    if (isAuthenticated) {
-      window.location = "/";
-    }
-    props.clearErrors();
-  });
+  // useEffect(() => {
+  //   const { isAuthenticated } = props;
+  //   if (isAuthenticated) {
+  //     window.location = "/";
+  //   }
+  //   props.clearErrors();
+  // });
 
   return (
     <Grid container component="main" className={classes.root}>
