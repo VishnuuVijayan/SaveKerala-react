@@ -135,7 +135,7 @@ export default function HomeScreen() {
           {data.map(data => (
             <Carousel.Item>
               <img
-                className="d-block w-100"
+                className="d-block w-100 "
                 src={data.imgsrc}
                 alt="First slide"
                 height={400}
@@ -163,7 +163,7 @@ export default function HomeScreen() {
                       title="Contemplative Reptile"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
+                      <Typography gutterBottom variant="h6" component="h2">
                         {card.heading}
                       </Typography>
                       <Typography
