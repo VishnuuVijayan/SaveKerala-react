@@ -70,6 +70,9 @@ export default function HomeScreen() {
     footer: {
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(6)
+    },
+    root: {
+      // height: 500
     }
   }));
   const classes = useStyles();
