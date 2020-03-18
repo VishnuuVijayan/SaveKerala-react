@@ -7,6 +7,13 @@ Router.get("/", (req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+Router.get("/isactive/", (req, res) => {
+  const query = { is_active: "true" };
+  Disaster.find(query)
+    .then(disasters => res.json(disasters))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 Router.get("/:name", (req, res) => {
   const query = { disaster_name: req.params.name };
   Disaster.find(query)

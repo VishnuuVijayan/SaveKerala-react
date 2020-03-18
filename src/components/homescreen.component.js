@@ -1,4 +1,4 @@
-import React, { Component, useStyles } from "react";
+import React, { Component, useStyles, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -10,32 +10,31 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import { Carousel } from "react-bootstrap";
 import CardActionArea from "@material-ui/core/CardActionArea";
 
 export default function HomeScreen() {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { disasters: [], images: [] };
-  // }
-  // componentDidMount() {
-  //   this.getData();
-  // }
+  const [index, setIndex] = useState(0);
 
-  // getData = () => {
-  //   axios
-  //     .get("http://localhost:5000/disaster/")
-  //     .then(response => {
-  //       const data = response.data;
-  //       this.setState({ disasters: data });
-  //       console.log("Data has been Recieved");
-  //     })
-  //     .catch(() => {
-  //       alert("Error Recieving Data");
-  //     });
-  // };
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
 
-  // render() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/disaster/isactive")
+      .then(response => {
+        const data = response.data;
+        setData(data);
+        console.log(data);
+      })
+      .catch(() => {
+        alert("Error Recieving Data");
+      });
+  }, []);
+
   const useStyles = makeStyles(theme => ({
     icon: {
       marginRight: theme.spacing(2)
@@ -131,37 +130,24 @@ export default function HomeScreen() {
       <CssBaseline />
 
       <main>
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              Carosel{" "}
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Carosel images
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Go TO{" "}
-                  </Button>
-                </Grid>
-                <Grid item></Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
+        {/* <div className={classes.heroContent}> */}
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+          {data.map(data => (
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={data.imgsrc}
+                alt="First slide"
+                height={400}
+              />
+              <Carousel.Caption>
+                <h3>{data.disaster_name}</h3>
+                <p>{data.slug}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+        {/* </div> */}
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
