@@ -10,7 +10,9 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import CardActionArea from "@material-ui/core/CardActionArea";
+
 export default function HomeScreen() {
   // constructor(props) {
   //   super(props);
@@ -43,7 +45,7 @@ export default function HomeScreen() {
       padding: theme.spacing(8, 0, 6)
     },
     heroButtons: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(4)
     },
     cardGrid: {
       paddingTop: theme.spacing(8),
@@ -55,7 +57,9 @@ export default function HomeScreen() {
       flexDirection: "column"
     },
     cardMedia: {
-      paddingTop: "56.25%" // 16:9
+      height: 0,
+      paddingTop: "56.25%" // 16:9,
+      // marginTop: "30"
     },
     cardContent: {
       flexGrow: 1,
@@ -69,15 +73,55 @@ export default function HomeScreen() {
     }
   }));
   const classes = useStyles();
-  const cards = [{key : 1, heading : "Request For Resources",content:"",btnRoute : "#1", image:"https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg" },
-  {key : 2, heading : "Contribute",content:"",btnRoute : "#1", image:"https://www.pinclipart.com/picdir/middle/280-2800355_social-contribution-activities-clipart.png"},
-  {key : 3, heading : "Relief Camps",content:"",btnRoute : "#1", image:"https://cdn2.iconfinder.com/data/icons/refugee-crisis-glyph/64/camp-asylum-refugee-shelter-refuge-512.png"},
-  {key : 4, heading : "Volunteer Registration",content:"",btnRoute : "#1", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTpmfpY5-XBXZ8pS0P5SPsIVW4MerMRzpkJaUUnScaduH8t-uS"},
-  {key : 5, heading : "Camps Registration",content:"",btnRoute : "#1", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSL2D8xL2ohwalT7LMYaESIxtxMT8lJrz74TZAFeQs8TG53YUhm"},
-  {key : 6, heading : "Collection Centers",content:"",btnRoute : "#1", image:"https://img.favpng.com/5/22/2/google-maps-computer-icons-google-map-maker-symbol-png-favpng-1v3iHMhVJGSUhJtq7a43cnXhP.jpg"},
-
-
-];
+  const cards = [
+    {
+      key: 1,
+      heading: "Request For Resources",
+      content: "",
+      btnRoute: "#1",
+      image: "https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
+    },
+    {
+      key: 2,
+      heading: "Contribute",
+      content: "",
+      btnRoute: "#1",
+      image:
+        "https://www.pinclipart.com/picdir/middle/280-2800355_social-contribution-activities-clipart.png"
+    },
+    {
+      key: 3,
+      heading: "Relief Camps",
+      content: "",
+      btnRoute: "#1",
+      image:
+        "https://cdn2.iconfinder.com/data/icons/refugee-crisis-glyph/64/camp-asylum-refugee-shelter-refuge-512.png"
+    },
+    {
+      key: 4,
+      heading: "Volunteer Registration",
+      content: "",
+      btnRoute: "#1",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTpmfpY5-XBXZ8pS0P5SPsIVW4MerMRzpkJaUUnScaduH8t-uS"
+    },
+    {
+      key: 5,
+      heading: "Camps Registration",
+      content: "",
+      btnRoute: "#1",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSL2D8xL2ohwalT7LMYaESIxtxMT8lJrz74TZAFeQs8TG53YUhm"
+    },
+    {
+      key: 6,
+      heading: "Collection Centers",
+      content: "",
+      btnRoute: "#1",
+      image:
+        "https://img.favpng.com/5/22/2/google-maps-computer-icons-google-map-maker-symbol-png-favpng-1v3iHMhVJGSUhJtq7a43cnXhP.jpg"
+    }
+  ];
 
   return (
     <React.Fragment>
@@ -93,7 +137,6 @@ export default function HomeScreen() {
               color="textPrimary"
               gutterBottom
             >
-              
               Carosel{" "}
             </Typography>
             <Typography
@@ -121,30 +164,32 @@ export default function HomeScreen() {
           <Grid container spacing={4}>
             {cards.map(card => (
               <Grid item key={card.key} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  {/* <CardMedia
-                    className={classes.cardMedia}
-                    // image="https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
-                    title="Image title"
-                    icon={card.icon}
-
-                  /> */}
-                  {/* <{card.icon}/> */}
-                  <cardMedia
-                  className={classes.cardMedia}
-                  title="image title"
-                  image={card.image}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.heading}
-                    </Typography>
-                    <Typography>{card.content} </Typography>
-                  </CardContent>
-                  <CardActions style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <Button size="small" onpress={card.btnRoute} color="primary">
-                      View
-                     </Button>
+                <Card className={classes.root}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="250"
+                      image={card.image}
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {card.heading}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {card.content}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button size="small" variant="contained" color="primary">
+                      Go there
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
