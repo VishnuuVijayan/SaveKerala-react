@@ -79,7 +79,8 @@ export default function HomeScreen() {
       heading: "Request For Resources",
       content: "",
       btnRoute: "#1",
-      image: "https://promptinnov.com/wp-content/uploads/2016/03/globe-bg.jpg"
+      image:
+        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png"
     },
     {
       key: 2,
@@ -87,15 +88,14 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://www.pinclipart.com/picdir/middle/280-2800355_social-contribution-activities-clipart.png"
+        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg"
     },
     {
       key: 3,
       heading: "Relief Camps",
       content: "",
       btnRoute: "#1",
-      image:
-        "https://cdn2.iconfinder.com/data/icons/refugee-crisis-glyph/64/camp-asylum-refugee-shelter-refuge-512.png"
+      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg"
     },
     {
       key: 4,
@@ -103,7 +103,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRTpmfpY5-XBXZ8pS0P5SPsIVW4MerMRzpkJaUUnScaduH8t-uS"
+        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg"
     },
     {
       key: 5,
@@ -111,7 +111,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSL2D8xL2ohwalT7LMYaESIxtxMT8lJrz74TZAFeQs8TG53YUhm"
+        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png"
     },
     {
       key: 6,
@@ -119,7 +119,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://img.favpng.com/5/22/2/google-maps-computer-icons-google-map-maker-symbol-png-favpng-1v3iHMhVJGSUhJtq7a43cnXhP.jpg"
+        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg"
     }
   ];
 
