@@ -176,6 +176,7 @@ function SignInSide(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onSubmit = e => {
+    const { isAuthenticated } = props;
     e.preventDefault();
     const user = {
       email,
@@ -183,6 +184,11 @@ function SignInSide(props) {
     };
 
     props.login(user);
+    // const isAuthenticated = props;
+
+    if (isAuthenticated) {
+      window.location = "/";
+    }
   };
 
   const propTypes = {
@@ -192,13 +198,14 @@ function SignInSide(props) {
     clearErrors: PropTypes.func.isRequired
   };
 
-  // useEffect(() => {
-  //   const { isAuthenticated } = props;
-  //   if (isAuthenticated) {
-  //     window.location = "/";
-  //   }
-  //   props.clearErrors();
-  // });
+  useEffect(() => {
+    const { isAuthenticated } = props;
+
+    if (isAuthenticated) {
+      window.location = "/";
+    }
+    props.clearErrors();
+  }, []);
 
   return (
     <Grid container component="main" className={classes.root}>

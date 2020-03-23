@@ -25,6 +25,7 @@ import UpdateCollector from "./components/updatecollector.component";
 import AuthCards from "./components/Cards/AuthCards";
 import UpdateTahsildar from "./components/updateTahsildar.component";
 import UpdateTahsildarTwo from "./components/updatetahsildar2.component";
+import AddVolunteer from "./components/addvolunteer.component";
 
 class App extends Component {
   componentDidMount() {
@@ -73,6 +74,11 @@ class App extends Component {
               path="/admin/update-collector/update"
               exact
               component={UpdateCollector}
+            />
+            <Route
+              path="/add-volunteer-details"
+              exact
+              component={AddVolunteer}
             />
           </Router>
         </div>
