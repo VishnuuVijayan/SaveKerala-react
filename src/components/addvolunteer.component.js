@@ -2,20 +2,33 @@ import React, { Component } from "react";
 import { Container, Form, Button, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Alert } from "react-bootstrap";
+import Axios from "axios";
 
 class AddVolunteer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bloodgroup: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
-      department: ["department1", "department2", "department3"],
+      bloodgroup: [
+        "Choose...",
+        "A+",
+        "A-",
+        "B+",
+        "B-",
+        "O+",
+        "O-",
+        "AB+",
+        "AB-"
+      ],
+      department: ["Choose...", "department1", "department2", "department3"],
       dept: "",
-      bg: "Choose...",
+      bg: "",
       locality: "",
       contact: null,
       address: "",
       skills: "",
-      user: {}
+      user: {},
+      readytovolunteer: true
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -25,13 +38,40 @@ class AddVolunteer extends Component {
   };
 
   componentDidMount() {
-    const { user } = this.props;
-    this.setState({ user });
+    // this.setState({ user });
   }
 
-  onSubmit = () => {};
+  onSubmit = e => {
+    e.preventDefault();
+    const { user } = this.props;
+    const { _id, email, first_name, last_name } = user;
+    const {
+      locality,
+      contact,
+      address,
+      skills,
+      bg,
+      dept,
+      readytovolunteer
+    } = this.state;
+
+    const newVolunteer = {
+      locality,
+      contact,
+      address,
+      skills,
+      bg,
+      dept,
+      readytovolunteer
+    };
+
+    Axios.post(
+      "http://localhost:5000/users/update/" + _id,
+      newVolunteer
+    ).then(res => console.log(res.data));
+  };
   render() {
-    // console.log(this.state.user.email);
+    // console.log(this.state.user);
     return (
       <div style={{ backgroundColor: "#fff", height: 700 }}>
         <Container>
@@ -105,12 +145,24 @@ class AddVolunteer extends Component {
             </Form.Row>
 
             <Form.Group id="formGridCheckbox">
-              <Form.Check type="checkbox" label="I'm ready to Volunteer" />
+              <Form.Check
+                type="checkbox"
+                value={this.state.ready}
+                onChange={e => {
+                  this.setState({ ready: !this.state.ready });
+                }}
+                label="I'm ready to Volunteer"
+              />
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            {this.state.ready ? (
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            ) : (
+              <Button variant="primary" type="submit" disabled>
+                Submit
+              </Button>
+            )}
           </Form>
         </Container>
       </div>

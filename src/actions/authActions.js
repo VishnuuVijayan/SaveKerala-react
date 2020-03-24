@@ -22,7 +22,6 @@ export const loadUser = () => (dispatch, getState) => {
   axios
     .get("http://localhost:5000/auth/user", tokenConfig(getState))
     .then(res => {
-      console.log(res.data);
       if (res.data.email === "admin") {
         dispatch({
           type: ADMIN_LOADED,

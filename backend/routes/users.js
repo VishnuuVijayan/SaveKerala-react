@@ -14,6 +14,25 @@ Router.route("/add").get((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+Router.route("/update/:id").post((req, res) => {
+  User.findById(req.params.id).then(user => {
+    user.locality = req.body.locality;
+    user.contact = req.body.contact;
+    user.address = req.body.address;
+    user.skills = req.body.skills;
+    user.dept = req.body.dept;
+    user.bg = req.body.bg;
+    user.readytovolunteer = req.body.readytovolunteer;
+    user
+      .save()
+      .then(() =>
+        res
+          .json("User Updated!")
+          .catch(err => res.status(400).json("Error : " + err))
+      );
+  });
+});
+
 Router.route("/add").post((req, res, err) => {
   const { email, password, first_name, last_name } = req.body;
 
