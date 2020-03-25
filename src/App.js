@@ -22,7 +22,7 @@ import UpdateDetails from "./components/Admin/updatedetails.component";
 import AddSecretary from "./components/Admin/addsecretary.component";
 import EditCollector from "./components/Admin/editCollector.component";
 import UpdateCollector from "./components/Admin/updatecollector.component";
-import AuthCards from "./components/Cards/AuthCards";
+import AuthCards from "./components/Utils/AuthCards";
 import UpdateTahsildar from "./components/Admin/updateTahsildar.component";
 import UpdateTahsildarTwo from "./components/Admin/updatetahsildar2.component";
 import AddVolunteer from "./components/User/addvolunteer.component";

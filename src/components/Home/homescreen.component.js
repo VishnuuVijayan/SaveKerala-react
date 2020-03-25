@@ -81,7 +81,7 @@ export default function HomeScreen() {
       key: 1,
       heading: "Request For Resources",
       content: "",
-      btnRoute: "#  ",
+      btnRoute: "resources-details",
       image:
         "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png"
     },

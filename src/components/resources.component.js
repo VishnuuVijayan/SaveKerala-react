@@ -4,16 +4,16 @@ import Modal from "./modal";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-class Resources extends Component {
-  static propTypes = {
-    auth: PropTypes.object.isRequired
-  };
-  render() {
-    const { isAdminAuthenticated } = this.props.auth;
-    return <div>{isAdminAuthenticated ? <Content /> : <Modal />}</div>;
-  }
-}
-class Content extends React.Component {
+// class Resources extends Component {
+//   static propTypes = {
+//     auth: PropTypes.object.isRequired
+//   };
+//   render() {
+//     const { isAdminAuthenticated } = this.props.auth;
+//     return <div>{isAdminAuthenticated ? <Content /> : <Modal />}</div>;
+//   }
+// }
+export default class Resources extends React.Component {
   constructor(props) {
     super(props);
 
@@ -63,8 +63,7 @@ class Content extends React.Component {
     console.log("object");
     e.preventDefault();
     const Resources = {
-      location: this.state.location,
-
+      location: this.state.location
     };
 
     console.log(Resources);
@@ -93,27 +92,15 @@ class Content extends React.Component {
             </div>
             <div className="form-group m-3">
               <label> Camp Name</label>
-              <input
-                type="text"
-                className="form-control"
-                
-              />
+              <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
               <label> Needed Materials</label>
-              <input
-                type="text"
-                className="form-control"
-                
-              />
+              <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
               <label> Count</label>
-              <input
-                type="text"
-                className="form-control"
-               
-              />
+              <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
               <input type="submit" className="btn btn-primary" value="SUBMIT" />
@@ -125,9 +112,9 @@ class Content extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
-  // error: state.error
-});
+// const mapStateToProps = state => ({
+//   auth: state.auth
+//   // error: state.error
+// });
 
-export default connect(mapStateToProps, null)(Resources);
+// export default connect(mapStateToProps, null)(Resources);
