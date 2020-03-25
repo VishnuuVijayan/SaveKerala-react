@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import axios from "axios";
 import { Carousel } from "react-bootstrap";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import { Link } from "react-router-dom";
 
 export default function HomeScreen() {
   const [index, setIndex] = useState(0);
@@ -80,7 +81,7 @@ export default function HomeScreen() {
       key: 1,
       heading: "Request For Resources",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "#  ",
       image:
         "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png"
     },
@@ -88,7 +89,7 @@ export default function HomeScreen() {
       key: 2,
       heading: "Contribute",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "#",
       image:
         "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg"
     },
@@ -96,14 +97,14 @@ export default function HomeScreen() {
       key: 3,
       heading: "Relief Camps",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "#",
       image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg"
     },
     {
       key: 4,
       heading: "Volunteer Registration",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "/add-volunteer-details",
       image:
         "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg"
     },
@@ -111,7 +112,7 @@ export default function HomeScreen() {
       key: 5,
       heading: "Camps Registration",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "#",
       image:
         "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png"
     },
@@ -176,9 +177,16 @@ export default function HomeScreen() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" variant="contained" color="primary">
-                      Go there
-                    </Button>
+                    <Link to={card.btnRoute}>
+                      <Button
+                        size="small"
+                        // onClick=
+                        variant="contained"
+                        color="primary"
+                      >
+                        Go there
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>

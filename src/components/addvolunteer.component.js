@@ -1,8 +1,16 @@
-import React, { Component } from "react";
-import { Container, Form, Button, Col, Row } from "react-bootstrap";
+import React, { Component, useState } from "react";
+import {
+  Container,
+  Form,
+  Button,
+  Col,
+  Row,
+  Alert,
+  Modal
+} from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Alert } from "react-bootstrap";
 import Axios from "axios";
 
 class AddVolunteer extends Component {
@@ -28,22 +36,20 @@ class AddVolunteer extends Component {
       address: "",
       skills: "",
       user: {},
-      readytovolunteer: true
+      readytovolunteer: true,
+      auth: false
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   static propTypes = {
-    user: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
+    // isAuthenticated: PropTypes.bool
   };
-
-  componentDidMount() {
-    // this.setState({ user });
-  }
 
   onSubmit = e => {
     e.preventDefault();
-    const { user } = this.props;
+    const { user } = this.props.auth;
     const { _id, email, first_name, last_name } = user;
     const {
       locality,
@@ -71,7 +77,6 @@ class AddVolunteer extends Component {
     ).then(res => console.log(res.data));
   };
   render() {
-    // console.log(this.state.user);
     return (
       <div style={{ backgroundColor: "#fff", height: 700 }}>
         <Container>
@@ -170,8 +175,51 @@ class AddVolunteer extends Component {
   }
 }
 
+function ModalVisible() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  return (
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class Volunteer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+  render() {
+    const { isAuthenticated, user } = this.props.auth;
+    // console.log(isAuthenticated);
+    const show = isAuthenticated;
+    console.log(show);
+    return (
+      <div>
+        {isAuthenticated ? <AddVolunteer /> : <Redirect to="/user-login" />}
+      </div>
+    );
+  }
+}
+
 const mapStateToProps = state => ({
-  user: state.auth.user
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(AddVolunteer);
+export default connect(mapStateToProps, null)(Volunteer);

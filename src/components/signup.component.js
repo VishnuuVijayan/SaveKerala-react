@@ -461,7 +461,7 @@ class SignUp extends React.Component {
     return (
       <Container style={{ paddingTop: 50 }}>
         <Paper className={classes.padding}>
-          <h1 className="text-info">Sign Up</h1>
+          <h1 className="text-primary">Sign Up</h1>
           <div className={classes.margin}>
             {this.state.msg ? (
               <Alert variant="danger">{this.state.msg}</Alert>
