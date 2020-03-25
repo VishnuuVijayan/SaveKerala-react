@@ -388,8 +388,8 @@ import {
   Container
 } from "@material-ui/core";
 import { connect } from "react-redux";
-import { register } from "../actions/authActions";
-import { clearErrors } from "../actions/errorActions";
+import { register } from "../../actions/authActions";
+import { clearErrors } from "../../actions/errorActions";
 import PropTypes from "prop-types";
 import { Alert } from "react-bootstrap";
 

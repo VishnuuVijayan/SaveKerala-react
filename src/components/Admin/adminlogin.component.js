@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import { Form, Button, Row, Col } from "react-bootstrap";
-import "./styles.css";
+import "../styles.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { adminlogin } from "../actions/authActions";
-import { clearErrors } from "../actions/errorActions";
+import { adminlogin } from "../../actions/authActions";
+import { clearErrors } from "../../actions/errorActions";
 
 class AdminLogin extends Component {
   constructor(props) {

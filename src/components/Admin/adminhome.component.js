@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 // import "./Cards/AdminCards";
-import AdminCards from "./Cards/AdminCards";
+import AdminCards from "../Cards/AdminCards";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Modal from "./modal";
+import Modal from "../modal";
 class Adminhome extends Component {
   constructor(props) {
     super(props);

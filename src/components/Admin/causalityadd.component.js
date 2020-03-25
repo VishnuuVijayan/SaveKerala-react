@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
-import Modal from "./modal";
+import Modal from "../modal";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 

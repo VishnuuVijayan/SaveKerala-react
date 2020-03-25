@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Form, Button, Row, Col } from "react-bootstrap";
-import "./styles.css";
+import "../styles.css";
 
 export default class OfficerLogin extends Component {
   render() {

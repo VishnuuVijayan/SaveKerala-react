@@ -4,7 +4,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
-import Modal from "./modal";
+import Modal from "../modal";
 class DisasterAdd extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired

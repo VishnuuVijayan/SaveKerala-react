@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Modal from "./modal";
+import Modal from "../modal";
 
 class Content extends React.Component {
   constructor(props) {

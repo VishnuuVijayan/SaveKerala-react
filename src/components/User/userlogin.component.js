@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserLoginCards from "./Cards/UserLoginCards";
+import UserLoginCards from "../Cards/UserLoginCards";
 
 export default class UserLogin extends Component {
   render() {

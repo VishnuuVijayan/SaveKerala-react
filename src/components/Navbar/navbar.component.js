@@ -5,7 +5,7 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import Logout from "../components/logout.component";
+import Logout from "../User/logout.component";
 
 class NavbarUser extends Component {
   static propTypes = {

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { logout } from "../actions/authActions";
+import { logout } from "../../actions/authActions";
 import { Nav } from "react-bootstrap";
 import PropTypes from "prop-types";
 

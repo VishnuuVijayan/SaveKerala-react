@@ -120,8 +120,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { clearErrors } from "../actions/errorActions";
-import { login } from "../actions/authActions";
+import { clearErrors } from "../../actions/errorActions";
+import { login } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
 function Copyright() {
