@@ -26,6 +26,7 @@ import AuthCards from "./components/Cards/AuthCards";
 import UpdateTahsildar from "./components/updateTahsildar.component";
 import UpdateTahsildarTwo from "./components/updatetahsildar2.component";
 import AddVolunteer from "./components/addvolunteer.component";
+import Resources from "./components/resources.component";
 
 class App extends Component {
   componentDidMount() {
@@ -79,6 +80,11 @@ class App extends Component {
               path="/add-volunteer-details"
               exact
               component={AddVolunteer}
+            />
+            <Route
+              path="/resources-details"
+              exact
+              component={Resources}
             />
           </Router>
         </div>
