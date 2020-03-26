@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import "./Cards/AdminCards";
-import AdminCards from "../Cards/AdminCards";
+import AdminCards from "../Utils/AdminCards";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Modal from "../modal";
