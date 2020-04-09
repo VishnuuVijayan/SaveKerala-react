@@ -13,6 +13,7 @@ import axios from "axios";
 import { Carousel } from "react-bootstrap";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function HomeScreen() {
   const [index, setIndex] = useState(0);
@@ -26,7 +27,7 @@ export default function HomeScreen() {
   useEffect(() => {
     axios
       .get("http://localhost:5000/disaster/isactive")
-      .then(response => {
+      .then((response) => {
         const data = response.data;
         setData(data);
         console.log(data);
@@ -36,44 +37,44 @@ export default function HomeScreen() {
       });
   }, []);
 
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles((theme) => ({
     icon: {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(2),
     },
     heroContent: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(8, 0, 6)
+      padding: theme.spacing(8, 0, 6),
     },
     heroButtons: {
-      marginTop: theme.spacing(4)
+      marginTop: theme.spacing(4),
     },
     cardGrid: {
       paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8)
+      paddingBottom: theme.spacing(8),
     },
     card: {
       height: "100%",
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     cardMedia: {
       height: 0,
-      paddingTop: "56.25%" // 16:9,
+      paddingTop: "56.25%", // 16:9,
       // marginTop: "30"
     },
     cardContent: {
       flexGrow: 1,
       textAlign: "center",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
     },
     footer: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(6)
+      padding: theme.spacing(6),
     },
     root: {
       // height: 500
-    }
+    },
   }));
   const classes = useStyles();
   const cards = [
@@ -83,7 +84,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "resources-details",
       image:
-        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png"
+        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png",
     },
     {
       key: 2,
@@ -91,14 +92,14 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#",
       image:
-        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg"
+        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg",
     },
     {
       key: 3,
       heading: "Relief Camps",
       content: "",
       btnRoute: "#",
-      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg"
+      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg",
     },
     {
       key: 4,
@@ -106,7 +107,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "/add-volunteer-details",
       image:
-        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg"
+        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg",
     },
     {
       key: 5,
@@ -114,7 +115,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#",
       image:
-        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png"
+        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png",
     },
     {
       key: 6,
@@ -122,8 +123,8 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg"
-    }
+        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg",
+    },
   ];
 
   return (
@@ -133,7 +134,7 @@ export default function HomeScreen() {
       <main>
         {/* <div className={classes.heroContent}> */}
         <Carousel activeIndex={index} onSelect={handleSelect}>
-          {data.map(data => (
+          {data.map((data) => (
             <Carousel.Item>
               <img
                 className="d-block w-100 "
@@ -152,7 +153,7 @@ export default function HomeScreen() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map(card => (
+            {cards.map((card) => (
               <Grid item key={card.key} xs={12} sm={6} md={4}>
                 <Card className={classes.root}>
                   <CardActionArea>
@@ -195,20 +196,8 @@ export default function HomeScreen() {
         </Container>
       </main>
       {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer Here
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Team Vibe{" "}
-        </Typography>
-        {/* <Copyright /> */}
-      </footer>
+      <Footer />
+
       {/* End footer */}
     </React.Fragment>
   );
