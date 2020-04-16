@@ -14,12 +14,16 @@ const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Database Connected ");
+});
+
+app.get("/", (req, res) => {
+  res.send("<h1>Welcome to SaveKerala Cloud Server</h1>");
 });
 
 const disasterRouter = require("./routes/disaster");
