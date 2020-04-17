@@ -15,67 +15,39 @@ class Content extends React.Component {
       tahsildar_list: [],
       district: "",
       districts: [],
-      id: ""
+      id: "",
       // taluk: ""
     };
   }
 
   onChangeDistrict(e) {
     this.setState({
-      district: e.target.value
+      district: e.target.value,
     });
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:5000/tahsildarlist/").then(res => {
-      let datas = res.data;
+    Axios.get("http://localhost:5000/tahsildarlist/list/districts").then(
+      (res) => {
+        let datas = res.data;
+        console.log(datas);
+        let uniqueDistricts = [];
+        datas.map((data) => {
+          if (uniqueDistricts.indexOf(data.district) === -1) {
+            uniqueDistricts.push(data.district);
+          }
+          return 0;
+        });
 
-      // Add object value with keys 'district' to set
-      // let districtsSet = new Set();
-      // data.forEach(item => districtsSet.add(item.district));
-      // console.log(districtsSet);
+        this.setState({
+          districts: uniqueDistricts,
+        });
 
-      // this.setState({
-      //   districtsSet: districtsSet
-      // });
-
-      // this.state.districtsSet.map(char => {
-      //   this.setState({
-      //     districts: char.value
-      //   });
-      // });
-
-      console.log(datas);
-
-      let uniqueDistricts = [];
-      datas.map(data => {
-        if (uniqueDistricts.indexOf(data.district) === -1) {
-          uniqueDistricts.push(data.district);
-        }
-        return 0;
-      });
-
-      this.setState({
-        districts: uniqueDistricts
-      });
-
-      this.setState({
-        district: uniqueDistricts[0]
-      });
-
-      // console.log(this.state.districts);
-
-      // this.setState({
-      //   district: districtsSet[0]
-      // });
-
-      // this.setState({
-      //   tahsildar_list: data
-      // });
-      // this.setState({
-      //   district: data[0].district
-      // });
-    });
+        this.setState({
+          district: uniqueDistricts[0],
+        });
+      }
+    );
     // Axios.get(
     //   "http://localhost:5000/tahsildarlist/" + this.state.district
     // ).then(res => {
@@ -109,7 +81,7 @@ class Content extends React.Component {
                 value={this.state.district}
                 onChange={this.onChangeDistrict}
               >
-                {this.state.districts.map(function(district) {
+                {this.state.districts.map(function (district) {
                   // let id = disaster._id;
                   // this.props.setDisasterID(id);
                   return (
@@ -128,7 +100,7 @@ class Content extends React.Component {
               <Link
                 to={{
                   pathname: "/admin/update-tahsildar/update",
-                  data: this.state.district
+                  data: this.state.district,
                 }}
               >
                 <input
@@ -147,7 +119,7 @@ class Content extends React.Component {
 
 class UpdateTahsildar extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
   render() {
     const { isAdminAuthenticated } = this.props.auth;
@@ -155,8 +127,8 @@ class UpdateTahsildar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, null)(UpdateTahsildar);
