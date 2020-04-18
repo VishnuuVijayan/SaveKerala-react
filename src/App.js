@@ -27,8 +27,9 @@ import UpdateTahsildar from "./components/Admin/updateTahsildar.component";
 import UpdateTahsildarTwo from "./components/Admin/updatetahsildar2.component";
 import AddVolunteer from "./components/User/addvolunteer.component";
 import Resources from "./components/resources.component";
-import Next from "./components/next.component";
+import Camp from "./components/camp.component";
 import Supply from "./components/releif.component";
+import Next from "./components/next.component";
 
 class App extends Component {
   componentDidMount() {
@@ -84,9 +85,9 @@ class App extends Component {
               component={AddVolunteer}
             />
             <Route path="/resources-details" exact component={Resources} />
-
-            <Route path="/next-details" exact component={Next} />
-            <Route path="/supply-details" exact component={Supply} />
+            <Route path="/camp-details" exact component={Camp} />
+          <Route path="/next-details" exact component={Next} />
+          <Route path="/supply-details" exact component={Supply} />
 
           </Router>
         </div>

@@ -80,50 +80,19 @@ export default function HomeScreen() {
   const cards = [
     {
       key: 1,
-      heading: "Request For Resources",
-      content: "",
-      btnRoute: "resources-details",
-      image:
-        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png",
-    },
-    {
-      key: 2,
-      heading: "Contribute",
-      content: "",
-      btnRoute: "next-details",
-      image:
-        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg",
-    },
-    {
-      key: 3,
-      heading: "Relief Camps",
-      content: "",
-      btnRoute: "camp-details",
-      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg",
-    },
-    {
-      key: 4,
-      heading: "Volunteer Registration",
-      content: "",
-      btnRoute: "/add-volunteer-details",
-      image:
-        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg",
-    },
-    {
-      key: 5,
-      heading: "Camps Registration",
+      heading: "Camp List",
       content: "",
       btnRoute: "#",
       image:
-        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png",
+        "https://image.winudf.com/v2/image/Y29tLnJlbGllZmtlcmFsYTEyMy5SRUxJRUZfQ0FNUF9pY29uXzE1MzU1Mjg5MDlfMDAz/icon.png?w=170&fakeurl=1",
     },
     {
-      key: 6,
-      heading: "Collection Centers",
+      key: 2,
+      heading: "Supply Requirments",
       content: "",
-      btnRoute: "#1",
+      btnRoute: "supply-details",
       image:
-        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg",
+        "https://pngimage.net/wp-content/uploads/2018/06/supply-png-8.png",
     },
   ];
 
