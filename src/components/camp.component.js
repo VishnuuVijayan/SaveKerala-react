@@ -24,18 +24,7 @@ export default function HomeScreen() {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/disaster/isactive")
-      .then((response) => {
-        const data = response.data;
-        setData(data);
-        console.log(data);
-      })
-      .catch(() => {
-        alert("Error Recieving Data");
-      });
-  }, []);
+ 
 
   const useStyles = makeStyles((theme) => ({
     icon: {
