@@ -27,6 +27,7 @@ import UpdateTahsildar from "./components/Admin/updateTahsildar.component";
 import UpdateTahsildarTwo from "./components/Admin/updatetahsildar2.component";
 import AddVolunteer from "./components/User/addvolunteer.component";
 import Resources from "./components/resources.component";
+import Next from "./components/next.component";
 
 class App extends Component {
   componentDidMount() {
@@ -83,6 +84,7 @@ class App extends Component {
             />
             <Route path="/resources-details" exact component={Resources} />
 
+            <Route path="/next-details" exact component={Next} />
           </Router>
         </div>
       </Provider>
