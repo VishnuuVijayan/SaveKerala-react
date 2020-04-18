@@ -8,12 +8,7 @@ export default class Next extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onChangeLocation = this.onChangeLocation.bind(this);
-    this.onChangeServiceRequired = this.onChangeServiceRequired.bind(this);
-    this.onChangeType = this.onChangeType.bind(this);
-    this.onChangeUrgency = this.onChangeUrgency.bind(this);
-    this.onSubmitForm = this.onSubmitForm.bind(this);
-
+   
     this.state = {
       location: "",
       urgency: "",

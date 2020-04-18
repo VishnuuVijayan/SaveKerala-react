@@ -90,7 +90,7 @@ export default function HomeScreen() {
       key: 2,
       heading: "Contribute",
       content: "",
-      btnRoute: "#",
+      btnRoute: "next-details",
       image:
         "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg",
     },
