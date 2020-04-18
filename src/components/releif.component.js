@@ -59,32 +59,27 @@ export default class Next extends React.Component {
               <input type="number" className="form-control" />
             </div>
             <div className="form-group m-3">
-              <label> Clothes Needed</label>
-              <input type="radio" id="Yes" value="True">
-  <label for="Yes">Yes</label><br>
-  <input type="radio" id="No" value="False">
-  <label for="No">No</label><br>
+              <label> Clothes Needed</label><br/>
+              <input type="radio" id="Yes" name="True" value="Yes"/>
+                <label for="Yes">Yes</label><br/>
+                <input type="radio" id="No" name="False" value="No"/>
+                <label for="No">No</label><br/>
             </div>
             <div className="form-group m-3">
-              <label> Food Needed</label>
-              <label for="Yes">Yes</label><br>
-  <input type="radio" id="No" value="False">
-  <label for="No">No</label><br>            </div>
+              <label> Food Needed</label><br/>
+              <input type="radio" id="Yes"name="True" value="Yes"/>
+                <label for="Yes">Yes</label><br/>              
+                <input type="radio" id="No" name="False" value="No"/>
+              <label for="No">No</label><br/>       
+           </div>
             <div className="form-group m-3">
-              <label> Bed Needed</label>
-              <label for="Yes">Yes</label><br>
-  <input type="radio" id="No" value="False">
-  <label for="No">No</label><br>            </div>
-  <div className="form-group m-3">
               <label>Extra Needed Materials</label>
               <input
                 type="Text" placeholder="Add new things seperated by comma" className="form-control"
               />
-
-
-  
             <div className="form-group m-3">
               <input type="submit" className="btn btn-primary" value="SUBMIT" />
+            </div>
             </div>
           </form>
         </div>

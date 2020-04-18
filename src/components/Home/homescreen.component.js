@@ -98,7 +98,7 @@ export default function HomeScreen() {
       key: 3,
       heading: "Relief Camps",
       content: "",
-      btnRoute: "#",
+      btnRoute: "supply-details",
       image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg",
     },
     {
