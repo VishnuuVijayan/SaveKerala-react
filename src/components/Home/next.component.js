@@ -1,73 +1,92 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import React, { Component, useState } from "react";
+import Modal from "./modal";
+import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const useStyles = makeStyles((theme) => ({
-  mainFeaturedPost: {
-    position: 'relative',
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
-  },
-  mainFeaturedPostContent: {
-    position: 'relative',
-    padding: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
-      paddingRight: 0,
-    },
-  },
-  card: {
-    display: 'flex',
-  },
-  cardDetails: {
-    flex: 1,
-  },
-  cardMedia: {
-    width: 160,
-  },
-}));
+export default class Next extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default function MainFeaturedPost(props) {
-  const classes = useStyles();
-  const { post } = props;
+    this.onChangeLocation = this.onChangeLocation.bind(this);
+    this.onChangeServiceRequired = this.onChangeServiceRequired.bind(this);
+    this.onChangeType = this.onChangeType.bind(this);
+    this.onChangeUrgency = this.onChangeUrgency.bind(this);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
 
-  return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-      <div className={classes.overlay} />
-      <Grid container>
-        <Grid item md={6}>
-          <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              Head
-            </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-                Description
-            </Typography>
-          </div>
-        </Grid>
-      </Grid>
-    </Paper>
-  );
+    this.state = {
+      location: "",
+      urgency: "",
+      type: "",
+      service_required: ""
+    };
+  }
+
+  onChangeLocation(e) {
+    this.setState({
+      location: e.target.value
+    });
+    // console.log(e.target.value);
+  }
+
+  onChangeUrgency(e) {
+    this.setState({
+      urgency: e.target.value
+    });
+    // console.log(e.target.value);
+  }
+
+  onChangeType(e) {
+    this.setState({
+      type: e.target.value
+    });
+    // console.log(e.target.value);
+  }
+
+  onChangeServiceRequired(e) {
+    this.setState({
+      service_required: e.target.value
+    });
+    // console.log(e.target.value);
+  }
+  render() {
+    return (
+      <div style={{ backgroundColor: "#fff", height: 700 }}>
+        <div className="container">
+          <h3 className="m-2">Donation Form</h3>
+          <form onSubmit={this.onSubmitForm}>
+            <div className="form-group m-3">
+              <label> Choose Payment Method</label>
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.location}
+                onChange={this.onChangeLocation}
+              />
+            </div>
+            <div className="form-group m-3">
+              <label> Full Name</label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className="form-group m-3">
+              <label> Email ID</label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className="form-group m-3">
+              <label> Mobile Number</label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className="form-group m-3">
+              <label> Amount In INR</label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className="form-group m-3">
+              <input type="submit" className="btn btn-primary" value="SUBMIT" />
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
-
-MainFeaturedPost.propTypes = {
-  post: PropTypes.object,
-};
