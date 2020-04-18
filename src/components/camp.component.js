@@ -77,7 +77,7 @@ export default function HomeScreen() {
     },
     {
       key: 2,
-      heading: "Supply Requirments",
+      heading: "Supply Requirements",
       content: "",
       btnRoute: "supply-details",
       image:
