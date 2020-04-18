@@ -1,156 +1,31 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Typography,
-  Grid,
-  TextField,
-  withStyles,
-  Button,
-  Link,
-} from "@material-ui/core";
-// import { Link  } from "react-router-dom";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: 40,
-    background: "#343a40",
-  },
-  gridStyle: {
-    padding: 30,
-  },
-  heading: {
-    color: "#fff",
-    fontSize: 18,
-    marginLeft: 40,
-    margin: 5,
-  },
-  items: {
-    color: "#b7d8d6",
-    opacity: 0.7,
-    margin: 5,
-    marginLeft: 40,
-    // fontSize: 1,
-  },
-  margin: {
-    marginTop: 5,
-    marginLeft: 40,
-    color: "#b7d8d6",
-  },
-}));
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
-const CssTextField = withStyles({
-  root: {
-    "& label.Mui-focused": {
-      color: "#fff",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#fff",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#fff",
-      },
-      "&:hover fieldset": {
-        borderColor: "#fff",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#fff",
-      },
-    },
-  },
-})(TextField);
-
-export default function Footer() {
-  const classes = useStyles();
+const FooterPage = () => {
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid item className={classes.gridStyle} xs={6} md={3}>
-          <Typography variant="body1" className={classes.heading}>
-            Services
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Services
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Services
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Services
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Services
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Services
-          </Typography>
-        </Grid>
-        <Grid item className={classes.gridStyle} xs={6} md={3}>
-          <Typography variant="body1" className={classes.heading}>
-            Resources
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Resources
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Resources
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Resources
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Resources
-          </Typography>
-          <Typography variant="body2" className={classes.items}>
-            Resources
-          </Typography>
-        </Grid>
-        <Grid item className={classes.gridStyle} xs={6} md={6}>
-          <Typography variant="body1" className={classes.heading}>
-            Contact us
-          </Typography>
-
-          <CssTextField
-            className={classes.margin}
-            label="Message"
-            variant="outlined"
-            id="custom-css-outlined-input"
-          />
-          <Grid item>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.margin}
-              href="#contained-buttons"
-            >
-              Send Message
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid
-          xs={12}
-          style={{ backgroundColor: "#101820ff" }}
-          //   align="center"
-        >
-          <Copyright />
-        </Grid>
-      </Grid>
-    </div>
+    <MDBFooter color="blue" className="font-small pt-4 mt-4">
+      <MDBContainer fluid className="text-center text-md-center">
+        <MDBRow>
+          <MDBCol md="12">
+           
+            <p>
+            For emergency support, call the District control room at 1077 or the State control room at 1070. Volunteers may contact District Project Managers for support related to volunteering and contributions
+            </p>
+            <p>
+            സഹായത്തിനായി സന്നദ്ധ സേവകർ തയ്യാറാണ്.
+സഹായം ആവശ്യമെങ്കിൽ വിളിക്കുക: ജില്ലാ കൺട്രോൾ റൂം: 1077 , സംസ്ഥാന കൺട്രോൾ റൂം: 1070
+            </p>
+          </MDBCol>
+          
+        </MDBRow>
+      </MDBContainer>
+      <div className="footer-copyright text-center py-3">
+        <MDBContainer fluid>
+          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> SaveKerala2020 </a>
+        </MDBContainer>
+      </div>
+    </MDBFooter>
   );
 }
 
-function Copyright() {
-  return (
-    <Typography
-      variant="body2"
-      style={{ color: "#fff", margin: 20 }}
-      align="center"
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        SaveKerala
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+export default FooterPage;

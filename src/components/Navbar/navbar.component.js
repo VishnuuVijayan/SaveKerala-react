@@ -55,22 +55,24 @@ class NavbarUser extends Component {
 
     return (
       <div className="w-100">
-        <header
+        {/* <header
           className="text-center py-2 "
-          style={{ backgroundColor: "#000" }}
+          style={{ backgroundColor: "#2196f3" }}
         >
           <div className="container">
             <h1 className="font-weight-light text-white">
-              Disaster Management Portal
+              Save Kerala
             </h1>
           </div>
-        </header>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="/">Disaster Management Portal</Navbar.Brand>
+        </header> */}
+        <Navbar collapseOnSelect expand="lg" variant="dark" className="text-center py-2 "
+          style={{ backgroundColor: "#2196f3" }}
+>
+          <Navbar.Brand href="/">Save Kerala</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
+              {/* <Nav.Link href="#features">Features</Nav.Link>
               <Nav.Link href="#pricing">Pricing</Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -84,7 +86,7 @@ class NavbarUser extends Component {
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             <Nav>
               {isAuthenticated
