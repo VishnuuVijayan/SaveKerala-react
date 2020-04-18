@@ -21,7 +21,7 @@ const FooterPage = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> SaveKerala2020 </a>
+          &copy; {new Date().getFullYear()} Copyright: <a href="/"> SaveKerala2020 </a>
         </MDBContainer>
       </div>
     </MDBFooter>
