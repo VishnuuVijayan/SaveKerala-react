@@ -51,10 +51,7 @@ export default class Next extends React.Component {
             <div className="form-group m-3">
               <label> Choose Payment Method</label>
               <input
-                type="text"
-                className="form-control"
-                value={this.state.location}
-                onChange={this.onChangeLocation}
+                type="text" className="form-control"
               />
             </div>
             <div className="form-group m-3">
