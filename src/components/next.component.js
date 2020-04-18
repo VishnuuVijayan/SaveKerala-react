@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 export default class Next extends React.Component {
   constructor(props) {
     super(props);
-
-   
     this.state = {
       location: "",
       urgency: "",
@@ -76,7 +74,7 @@ export default class Next extends React.Component {
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
-              <input type="submit" className="btn btn-primary" value="SUBMIT" />
+              <input type="submit" className="btn btn-primary" value="SUBMIT" formAction="http://receipts.cmdrf.kerala.gov.in/" />
             </div>
           </form>
         </div>
