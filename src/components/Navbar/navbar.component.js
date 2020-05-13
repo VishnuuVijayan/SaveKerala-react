@@ -65,9 +65,13 @@ class NavbarUser extends Component {
             </h1>
           </div>
         </header> */}
-        <Navbar collapseOnSelect expand="lg" variant="dark" className="text-center py-2 "
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          variant="dark"
+          className="text-center py-2 "
           style={{ backgroundColor: "#2196f3" }}
->
+        >
           <Navbar.Brand href="/">Save Kerala</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -102,7 +106,7 @@ class NavbarUser extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

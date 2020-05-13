@@ -137,7 +137,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh"
   },
@@ -175,7 +175,7 @@ function SignInSide(props) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     const { isAuthenticated } = props;
     e.preventDefault();
     const user = {
@@ -229,7 +229,7 @@ function SignInSide(props) {
               label="Email Address"
               name="email"
               value={email}
-              onChange={event => {
+              onChange={(event) => {
                 setEmail(event.target.value);
               }}
               autoComplete="email"
@@ -241,7 +241,7 @@ function SignInSide(props) {
               required
               fullWidth
               value={password}
-              onChange={event => {
+              onChange={(event) => {
                 setPassword(event.target.value);
               }}
               name="password"
@@ -285,7 +285,7 @@ function SignInSide(props) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error
 });
