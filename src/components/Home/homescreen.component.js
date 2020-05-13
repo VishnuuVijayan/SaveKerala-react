@@ -26,7 +26,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/disaster/isactive")
+      .get("/disaster/isactive")
       .then((response) => {
         const data = response.data;
         setData(data);
@@ -39,42 +39,42 @@ export default function HomeScreen() {
 
   const useStyles = makeStyles((theme) => ({
     icon: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     heroContent: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(8, 0, 6),
+      padding: theme.spacing(8, 0, 6)
     },
     heroButtons: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(4)
     },
     cardGrid: {
       paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
+      paddingBottom: theme.spacing(8)
     },
     card: {
       height: "100%",
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "column"
     },
     cardMedia: {
       height: 0,
-      paddingTop: "56.25%", // 16:9,
+      paddingTop: "56.25%" // 16:9,
       // marginTop: "30"
     },
     cardContent: {
       flexGrow: 1,
       textAlign: "center",
       justifyContent: "center",
-      alignItems: "center",
+      alignItems: "center"
     },
     footer: {
       backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(6),
+      padding: theme.spacing(6)
     },
     root: {
       // height: 500
-    },
+    }
   }));
   const classes = useStyles();
   const cards = [
@@ -84,7 +84,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "resources-details",
       image:
-        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png",
+        "https://cdn2.iconfinder.com/data/icons/antto-basic-1/450/request-512.png"
     },
     {
       key: 2,
@@ -92,14 +92,14 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "next-details",
       image:
-        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg",
+        "https://image.shutterstock.com/image-vector/partnership-contribute-puzzles-trendy-icon-260nw-1204863133.jpg"
     },
     {
       key: 3,
       heading: "Relief Camps",
       content: "",
       btnRoute: "camp-details",
-      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg",
+      image: "https://static1.bigstockphoto.com/4/5/2/large1500/254017279.jpg"
     },
     {
       key: 4,
@@ -107,7 +107,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "/add-volunteer-details",
       image:
-        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg",
+        "https://cdn5.vectorstock.com/i/1000x1000/15/44/helping-hands-vector-1421544.jpg"
     },
     {
       key: 5,
@@ -115,7 +115,7 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#",
       image:
-        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png",
+        "https://img.pngio.com/this-free-icons-png-design-of-camp-area-camp-png-2400_2400.png"
     },
     {
       key: 6,
@@ -123,8 +123,8 @@ export default function HomeScreen() {
       content: "",
       btnRoute: "#1",
       image:
-        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg",
-    },
+        "https://st3.depositphotos.com/6778576/14709/v/1600/depositphotos_147091501-stock-illustration-map-location-icon.jpg"
+    }
   ];
 
   return (

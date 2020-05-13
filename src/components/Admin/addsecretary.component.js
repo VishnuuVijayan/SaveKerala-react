@@ -61,9 +61,7 @@ export default class AddSecretary extends Component {
       contact: this.state.contact
     };
 
-    Axios.post("http://localhost:5000/secretary/add", secretary).then(res =>
-      alert("Data Added")
-    );
+    Axios.post("/secretary/add", secretary).then((res) => alert("Data Added"));
   }
   render() {
     return (

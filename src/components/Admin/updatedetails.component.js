@@ -101,15 +101,12 @@ class Content extends React.Component {
       people_affected: this.state.people_affected
     };
 
-    console.log("http://localhost:5000/update/" + this.state.disaster._id);
+    console.log("/update/" + this.state.disaster._id);
     console.log(disasterupdated);
 
     axios
-      .post(
-        "http://localhost:5000/disaster/update/" + this.state.disaster._id,
-        disasterupdated
-      )
-      .then(res => console.log(res.data));
+      .post("/disaster/update/" + this.state.disaster._id, disasterupdated)
+      .then((res) => console.log(res.data));
 
     // window.location = "/admin";
   }
@@ -127,7 +124,7 @@ class Content extends React.Component {
     // console.log(data.data);
     // const query = { disaster_name: d_name };
     // console.log(query);
-    axios.get("http://localhost:5000/disaster/" + d_name).then(res => {
+    axios.get("http://localhost:5000/disaster/" + d_name).then((res) => {
       const disaster = res.data[0];
       this.setState({ disaster });
     });
@@ -239,7 +236,7 @@ class UpdateDetails extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

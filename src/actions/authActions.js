@@ -20,8 +20,8 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("http://localhost:5000/auth/user", tokenConfig(getState))
-    .then(res => {
+    .get("/auth/user", tokenConfig(getState))
+    .then((res) => {
       if (res.data.email === "admin") {
         dispatch({
           type: ADMIN_LOADED,
@@ -35,7 +35,7 @@ export const loadUser = () => (dispatch, getState) => {
         // console.log(res.data);
       }
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.response && err.response.data) {
         dispatch(returnErrors(err.response.data, err.response.status));
       }
@@ -46,12 +46,9 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
-export const register = ({
-  first_name,
-  last_name,
-  email,
-  password
-}) => dispatch => {
+export const register = ({ first_name, last_name, email, password }) => (
+  dispatch
+) => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -61,8 +58,8 @@ export const register = ({
   const body = JSON.stringify({ first_name, last_name, email, password });
 
   axios
-    .post("http://localhost:5000/users/add", body, config)
-    .then(res => {
+    .post("/users/add", body, config)
+    .then((res) => {
       if (res.data) {
         dispatch({
           type: REGISTER_SUCCESS,
@@ -70,7 +67,7 @@ export const register = ({
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.response && err.response.data) {
         dispatch(
           returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
@@ -83,7 +80,7 @@ export const register = ({
     });
 };
 
-export const login = ({ email, password }) => dispatch => {
+export const login = ({ email, password }) => (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -93,8 +90,8 @@ export const login = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
 
   axios
-    .post("http://localhost:5000/auth/", body, config)
-    .then(res => {
+    .post("/auth/", body, config)
+    .then((res) => {
       if (res.data) {
         if (res.data.email === "admin") {
           dispatch({
@@ -109,7 +106,7 @@ export const login = ({ email, password }) => dispatch => {
         }
       }
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.response && err.response.data) {
         dispatch(
           returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
@@ -132,7 +129,7 @@ export const logout = () => {
 
 // });
 
-export const adminlogin = ({ email, password }) => dispatch => {
+export const adminlogin = ({ email, password }) => (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -143,8 +140,8 @@ export const adminlogin = ({ email, password }) => dispatch => {
 
   if (email === "admin" && password === "admin") {
     axios
-      .post("http://localhost:5000/auth/", body, config)
-      .then(res => {
+      .post("/auth/", body, config)
+      .then((res) => {
         if (res.data) {
           dispatch({
             type: ADMIN_LOGIN,
@@ -152,7 +149,7 @@ export const adminlogin = ({ email, password }) => dispatch => {
           });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response && err.response.data) {
           dispatch(
             returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
@@ -166,7 +163,7 @@ export const adminlogin = ({ email, password }) => dispatch => {
   }
 };
 
-export const tokenConfig = getState => {
+export const tokenConfig = (getState) => {
   const token = getState().auth.token;
 
   const config = {

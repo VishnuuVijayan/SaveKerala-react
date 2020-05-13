@@ -68,11 +68,11 @@ export default class Resources extends React.Component {
 
     console.log(Resources);
 
-    axios
-      .post("http://localhost:5000/resources/add", Resources)
-      .then(res => console.log(res.body));
+    // axios
+    //   .post("http://localhost:5000/resources/add", Resources)
+    //   .then(res => console.log(res.body));
 
-    window.location = "/admin-home";
+    // window.location = "/admin-home";
   }
 
   render() {

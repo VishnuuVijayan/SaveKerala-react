@@ -47,7 +47,7 @@ class AddVolunteer extends Component {
     // isAuthenticated: PropTypes.bool
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     const { user } = this.props.auth;
     const { _id, email, first_name, last_name } = user;
@@ -71,10 +71,9 @@ class AddVolunteer extends Component {
       readytovolunteer
     };
 
-    Axios.post(
-      "http://localhost:5000/users/update/" + _id,
-      newVolunteer
-    ).then(res => console.log(res.data));
+    Axios.post("/users/update/" + _id, newVolunteer).then((res) =>
+      console.log(res.data)
+    );
   };
   render() {
     return (
@@ -88,7 +87,7 @@ class AddVolunteer extends Component {
                 <Form.Control
                   type="text"
                   value={this.state.locality}
-                  onChange={e => this.setState({ locality: e.target.value })}
+                  onChange={(e) => this.setState({ locality: e.target.value })}
                   placeholder="Enter Locality"
                 />
               </Form.Group>
@@ -98,7 +97,7 @@ class AddVolunteer extends Component {
                 <Form.Control
                   type="number"
                   value={this.state.contact}
-                  onChange={e => this.setState({ contact: e.target.value })}
+                  onChange={(e) => this.setState({ contact: e.target.value })}
                   placeholder="Add Contact Number"
                 />
               </Form.Group>
@@ -108,7 +107,7 @@ class AddVolunteer extends Component {
               <Form.Label>Address</Form.Label>
               <Form.Control
                 value={this.state.address}
-                onChange={e => this.setState({ address: e.target.value })}
+                onChange={(e) => this.setState({ address: e.target.value })}
                 placeholder="1234 Main St"
               />
             </Form.Group>
@@ -119,7 +118,7 @@ class AddVolunteer extends Component {
                 <Form.Control
                   placeholder="Unique Skills"
                   value={this.state.skills}
-                  onChange={e => this.setState({ skills: e.target.value })}
+                  onChange={(e) => this.setState({ skills: e.target.value })}
                 />
               </Form.Group>
 
@@ -128,9 +127,9 @@ class AddVolunteer extends Component {
                 <Form.Control
                   as="select"
                   value={this.state.bg}
-                  onChange={e => this.setState({ bg: e.target.value })}
+                  onChange={(e) => this.setState({ bg: e.target.value })}
                 >
-                  {this.state.bloodgroup.map(bg => (
+                  {this.state.bloodgroup.map((bg) => (
                     <option>{bg}</option>
                   ))}
                 </Form.Control>
@@ -140,9 +139,9 @@ class AddVolunteer extends Component {
                 <Form.Control
                   as="select"
                   value={this.state.dept}
-                  onChange={e => this.setState({ dept: e.target.value })}
+                  onChange={(e) => this.setState({ dept: e.target.value })}
                 >
-                  {this.state.department.map(dpt => (
+                  {this.state.department.map((dpt) => (
                     <option>{dpt}</option>
                   ))}
                 </Form.Control>
@@ -153,7 +152,7 @@ class AddVolunteer extends Component {
               <Form.Check
                 type="checkbox"
                 value={this.state.ready}
-                onChange={e => {
+                onChange={(e) => {
                   this.setState({ ready: !this.state.ready });
                 }}
                 label="I'm ready to Volunteer"
@@ -218,7 +217,7 @@ class Volunteer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

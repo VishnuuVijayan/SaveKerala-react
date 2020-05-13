@@ -12,8 +12,8 @@ export default class Details extends Component {
     const data = this.props.location;
     const id = data.data;
     axios
-      .get("http://localhost:5000/disaster/" + id)
-      .then(response => {
+      .get("/disaster/" + id)
+      .then((response) => {
         const disaster = response.data;
         console.log("Data has been Recieved");
         // this.setState({

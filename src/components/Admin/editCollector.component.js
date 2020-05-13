@@ -25,7 +25,7 @@ class Content extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:5000/collectorlist/").then(res => {
+    Axios.get("/collectorlist/").then((res) => {
       const data = res.data;
       this.setState({
         collector_list: data
@@ -54,7 +54,7 @@ class Content extends React.Component {
                 value={this.state.district}
                 onChange={this.onChangeDistrict}
               >
-                {this.state.collector_list.map(function(collector_list) {
+                {this.state.collector_list.map(function (collector_list) {
                   return (
                     <option
                       key={collector_list.district}
@@ -98,7 +98,7 @@ class EditCollector extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

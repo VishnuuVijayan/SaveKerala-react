@@ -34,7 +34,7 @@ class Content extends React.Component {
 
     // console.log("http://localhost:5000/tahsildarlist/" + district);
 
-    Axios.get("http://localhost:5000/tahsildarlist/" + district).then(res => {
+    Axios.get("/tahsildarlist/" + district).then((res) => {
       const tahsildar = res.data;
       this.setState({
         tahsildar
@@ -61,9 +61,7 @@ class Content extends React.Component {
       district: this.state.district
     };
 
-    Axios.get(
-      "http://localhost:5000/tahsildarlist/taluk/" + this.state.taluk
-    ).then(res => {
+    Axios.get("/tahsildarlist/taluk/" + this.state.taluk).then((res) => {
       const data = res.data[0]._id;
       this.setState({
         tahsildar_id: data
@@ -73,9 +71,9 @@ class Content extends React.Component {
     });
 
     Axios.post(
-      "http://localhost:5000/tahsildarlist/update/" + this.state.tahsildar_id,
+      "/tahsildarlist/update/" + this.state.tahsildar_id,
       UpdatedTahsildar
-    ).then(res => console.log(res.data));
+    ).then((res) => console.log(res.data));
   }
 
   onChangeContact(e) {
@@ -127,7 +125,7 @@ class Content extends React.Component {
                 value={this.state.taluk}
                 onChange={this.onChangeTaluk}
               >
-                {this.state.tahsildar.map(function(tahsildar) {
+                {this.state.tahsildar.map(function (tahsildar) {
                   // let id = disaster._id;
                   // this.props.setDisasterID(id);
                   return (
@@ -193,7 +191,7 @@ class UpdateTahsildarTwo extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

@@ -72,8 +72,8 @@ class Content extends React.Component {
     console.log(causality);
 
     axios
-      .post("http://localhost:5000/causality/add", causality)
-      .then(res => console.log(res.body));
+      .post("/causality/add", causality)
+      .then((res) => console.log(res.body));
 
     window.location = "/admin-home";
   }
@@ -130,7 +130,7 @@ class Content extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
   // error: state.error
 });

@@ -15,39 +15,37 @@ class Content extends React.Component {
       tahsildar_list: [],
       district: "",
       districts: [],
-      id: "",
+      id: ""
       // taluk: ""
     };
   }
 
   onChangeDistrict(e) {
     this.setState({
-      district: e.target.value,
+      district: e.target.value
     });
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:5000/tahsildarlist/list/districts").then(
-      (res) => {
-        let datas = res.data;
-        console.log(datas);
-        let uniqueDistricts = [];
-        datas.map((data) => {
-          if (uniqueDistricts.indexOf(data.district) === -1) {
-            uniqueDistricts.push(data.district);
-          }
-          return 0;
-        });
+    Axios.get("/tahsildarlist/list/districts").then((res) => {
+      let datas = res.data;
+      console.log(datas);
+      let uniqueDistricts = [];
+      datas.map((data) => {
+        if (uniqueDistricts.indexOf(data.district) === -1) {
+          uniqueDistricts.push(data.district);
+        }
+        return 0;
+      });
 
-        this.setState({
-          districts: uniqueDistricts,
-        });
+      this.setState({
+        districts: uniqueDistricts
+      });
 
-        this.setState({
-          district: uniqueDistricts[0],
-        });
-      }
-    );
+      this.setState({
+        district: uniqueDistricts[0]
+      });
+    });
     // Axios.get(
     //   "http://localhost:5000/tahsildarlist/" + this.state.district
     // ).then(res => {
@@ -100,7 +98,7 @@ class Content extends React.Component {
               <Link
                 to={{
                   pathname: "/admin/update-tahsildar/update",
-                  data: this.state.district,
+                  data: this.state.district
                 }}
               >
                 <input
@@ -119,7 +117,7 @@ class Content extends React.Component {
 
 class UpdateTahsildar extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
   };
   render() {
     const { isAdminAuthenticated } = this.props.auth;
@@ -128,7 +126,7 @@ class UpdateTahsildar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, null)(UpdateTahsildar);

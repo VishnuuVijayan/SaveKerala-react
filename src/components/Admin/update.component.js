@@ -56,7 +56,7 @@ class Content extends React.Component {
   // };
 
   componentDidMount() {
-    axios.get("http://localhost:5000/disaster/").then(response => {
+    axios.get("/disaster/").then((response) => {
       if (response.data.length > 0) {
         const data = response.data;
         this.setState({
@@ -97,7 +97,7 @@ class Content extends React.Component {
                 value={this.state.disastername}
                 onChange={this.onChangeDisasterName}
               >
-                {this.state.disasters.map(function(disaster) {
+                {this.state.disasters.map(function (disaster) {
                   // let id = disaster._id;
                   // this.props.setDisasterID(id);
                   return (
@@ -143,7 +143,7 @@ class Update extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 

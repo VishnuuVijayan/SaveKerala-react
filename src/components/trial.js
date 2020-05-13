@@ -23,7 +23,7 @@ export default class Home extends Component {
   
     getData = () => {
       axios
-        .get("http://localhost:5000/disaster/")
+        .get("/disaster/")
         .then(response => {
           const data = response.data;
           this.setState({ disasters: data });

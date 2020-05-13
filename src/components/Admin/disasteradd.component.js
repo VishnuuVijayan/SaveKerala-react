@@ -142,7 +142,7 @@ class Content extends React.Component {
     });
   }
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     console.log("Hello");
     e.preventDefault();
 
@@ -165,9 +165,7 @@ class Content extends React.Component {
 
     console.log(disaster);
 
-    axios
-      .post("http://localhost:5000/disaster/add", disaster)
-      .then(res => console.log(res.data));
+    axios.post("/disaster/add", disaster).then((res) => console.log(res.data));
 
     window.location = "/admin-home";
   };
@@ -309,7 +307,7 @@ class Content extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
   // error: state.error
 });

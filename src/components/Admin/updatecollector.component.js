@@ -69,9 +69,9 @@ class Content extends React.Component {
     };
 
     Axios.post(
-      "http://localhost:5000/collectorlist/update/" + this.state.collector._id,
+      "/collectorlist/update/" + this.state.collector._id,
       UpdatedCollector
-    ).then(res => console.log(res.data));
+    ).then((res) => console.log(res.data));
   }
 
   componentDidMount() {
@@ -79,7 +79,7 @@ class Content extends React.Component {
     const district = data.data;
     console.log(data.data);
 
-    Axios.get("http://localhost:5000/collectorlist/" + district).then(res => {
+    Axios.get("/collectorlist/" + district).then((res) => {
       const collector = res.data[0];
       this.setState({ collector });
     });
@@ -159,7 +159,7 @@ class UpdateCollector extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
