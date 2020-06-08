@@ -100,10 +100,9 @@ export default class Resources extends React.Component {
               <label> Requestee Phone Number</label>
               <input type="text" className="form-control" />
             </div>
-            
-            <p>
-             <label>  Required materials</label>
-             <select id = "myList">
+            <div className="form-group m-3">
+             <label> <b> Required materials </b></label>
+             {/* <select id = "myList">
                <option value = "1">Water</option>
                <option value = "2">Food</option>
                <option value = "3">Clothing</option>
@@ -111,11 +110,18 @@ export default class Resources extends React.Component {
                <option value = "5">Kitchen utensil</option>
                <option value = "6">Toiletries</option>
                <option value = "7">other</option>
-
-
-
-             </select>
-          </p>
+             </select> */}
+    
+      <div>
+        <input type="checkbox" value="Male" name="gender" /> Water <br></br>
+        <input type="checkbox" value="Female" name="gender" /> Food <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Clothing <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Medicine <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Clothing <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Kitchen utensil <br></br>
+      </div>
+      
+      </div>
             <div className="form-group m-3">
               <input type="submit" className="btn btn-primary" value="SUBMIT" />
             </div>
