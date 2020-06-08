@@ -79,27 +79,26 @@ export default class Resources extends React.Component {
     return (
       <div style={{ backgroundColor: "#fff", height: 700 }}>
         <div className="container">
-          <h3 className="m-2">Request Resources</h3>
+          <h3 className="m-2">Request for Resources</h3>
           <form onSubmit={this.onSubmitForm}>
             <div className="form-group m-3">
-              <label> Location</label>
-              <input
-                type="text"
+              <label> District</label>
+              <input type="text"
                 className="form-control"
                 value={this.state.location}
                 onChange={this.onChangeLocation}
               />
             </div>
             <div className="form-group m-3">
-              <label> Camp Name</label>
+              <label> Location</label>
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
-              <label> Needed Materials</label>
+              <label> Requestee</label>
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
-              <label> Count</label>
+              <label> Requestee Phone Number</label>
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
