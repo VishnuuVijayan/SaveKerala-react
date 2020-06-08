@@ -52,12 +52,16 @@ export default class Next extends React.Component {
           <form onSubmit={this.onSubmitForm}>
             <div className="form-group m-3">
               <label> Choose Payment Method</label>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.location}
-                onChange={this.onChangeLocation}
-              />
+              <p>
+            
+             <select id = "myList">
+               <option value = "1">Credit/Debit Card/Internet Banking(Domestic)</option>
+               <option value = "2">Credit/Debit Card/Internet Banking(International)</option>
+               <option value = "3">Wallets</option>
+               
+             </select>
+          </p>
+              
             </div>
             <div className="form-group m-3">
               <label> Full Name</label>
@@ -75,6 +79,7 @@ export default class Next extends React.Component {
               <label> Amount In INR</label>
               <input type="text" className="form-control" />
             </div>
+
             <div className="form-group m-3">
               <input type="submit" className="btn btn-primary" value="SUBMIT" />
             </div>

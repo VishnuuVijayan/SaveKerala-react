@@ -83,8 +83,7 @@ export default class Resources extends React.Component {
           <form onSubmit={this.onSubmitForm}>
             <div className="form-group m-3">
               <label> District</label>
-              <input type="text"
-                className="form-control"
+              <input type="text" className="form-control"
                 value={this.state.location}
                 onChange={this.onChangeLocation}
               />
@@ -94,13 +93,29 @@ export default class Resources extends React.Component {
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
-              <label> Requestee</label>
+              <label> Requestee Name</label>
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
               <label> Requestee Phone Number</label>
               <input type="text" className="form-control" />
             </div>
+            
+            <p>
+             <label>  Required materials</label>
+             <select id = "myList">
+               <option value = "1">Water</option>
+               <option value = "2">Food</option>
+               <option value = "3">Clothing</option>
+               <option value = "4">Medicine</option>
+               <option value = "5">Kitchen utensil</option>
+               <option value = "6">Toiletries</option>
+               <option value = "7">other</option>
+
+
+
+             </select>
+          </p>
             <div className="form-group m-3">
               <input type="submit" className="btn btn-primary" value="SUBMIT" />
             </div>
