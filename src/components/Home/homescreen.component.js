@@ -14,6 +14,7 @@ import { Carousel } from "react-bootstrap";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import NewsComponent from "../Utils/NewsComponent";
 
 export default function HomeScreen() {
   const [index, setIndex] = useState(0);
@@ -133,22 +134,47 @@ export default function HomeScreen() {
 
       <main>
         {/* <div className={classes.heroContent}> */}
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-          {data.map((data) => (
-            <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={data.imgsrc}
-                alt="First slide"
-                height={400}
-              />
-              <Carousel.Caption>
-                <h3>{data.disaster_name}</h3>
-                <p>{data.slug}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        {/* <div
+          // className="container"
+          style={{
+            display: "flex",
+            marginTop: 20,
+            marginLeft: 100,
+            marginRight: 100
+            //   alignItems: "center",
+            //   justifyContent: "center",
+          }}
+        > */}
+        <Grid container spacing={5} style={{ marginTop: 10 }}>
+          <Grid item xs={12} md={6} style={{ marginLeft: 75 }}>
+            <Carousel
+              activeIndex={index}
+              style={{ width: "100%", height: 600 }}
+              onSelect={handleSelect}
+            >
+              {data.map((data) => (
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100 "
+                    src={data.imgsrc}
+                    alt="First slide"
+                    // height={400}
+                  />
+                  <Carousel.Caption>
+                    <h3>{data.disaster_name}</h3>
+                    <p>{data.slug}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <div style={{ marginLeft: 25 }}>
+              <NewsComponent />
+            </div>
+          </Grid>
+        </Grid>
+        {/* </div> */}
         {/* </div> */}
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
