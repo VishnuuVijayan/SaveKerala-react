@@ -81,6 +81,16 @@ export default class Resources extends React.Component {
         <div className="container">
           <h3 className="m-2">Request for Resources</h3>
           <form onSubmit={this.onSubmitForm}>
+            
+
+            <div className="form-group m-3">
+              <label> Requestee Name</label>
+              <input type="text" className="form-control" />
+            </div>
+            <div className="form-group m-3">
+              <label> Requestee Phone Number</label>
+              <input type="text" className="form-control" />
+            </div>
             <div className="form-group m-3">
               <label> District</label>
               <input type="text" className="form-control"
@@ -90,14 +100,6 @@ export default class Resources extends React.Component {
             </div>
             <div className="form-group m-3">
               <label> Location</label>
-              <input type="text" className="form-control" />
-            </div>
-            <div className="form-group m-3">
-              <label> Requestee Name</label>
-              <input type="text" className="form-control" />
-            </div>
-            <div className="form-group m-3">
-              <label> Requestee Phone Number</label>
               <input type="text" className="form-control" />
             </div>
             <div className="form-group m-3">
@@ -117,8 +119,10 @@ export default class Resources extends React.Component {
         <input type="checkbox" value="Female" name="gender" /> Food <br></br>
         <input type="checkbox" value="Other" name="gender" /> Clothing <br></br>
         <input type="checkbox" value="Other" name="gender" /> Medicine <br></br>
-        <input type="checkbox" value="Other" name="gender" /> Clothing <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Toiletries <br></br>
         <input type="checkbox" value="Other" name="gender" /> Kitchen utensil <br></br>
+        <input type="checkbox" value="Other" name="gender" /> other <br></br>
+
       </div>
       
       </div>
