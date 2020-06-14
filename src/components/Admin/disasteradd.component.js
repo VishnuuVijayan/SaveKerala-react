@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from "../modal";
+
 class DisasterAdd extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired
@@ -35,6 +36,7 @@ class Content extends React.Component {
     this.onChangePeopleAffected = this.onChangePeopleAffected.bind(this);
     // this.onChangeLastEdited = this.onChangeLastEdited.bind(this);
     this.onChangeisactive = this.onChangeisactive.bind(this);
+    this.onChangeMobThumbnail = this.onChangeMobThumbnail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -53,13 +55,19 @@ class Content extends React.Component {
       last_edited: new Date(),
       is_active: false,
       imgsrc: "",
-      modalToggle: true
+      modalToggle: true,
+      mobThumbnail: ""
     };
   }
 
   onChangeimage(e) {
     this.setState({
       imgsrc: e.target.value
+    });
+  }
+  onChangeMobThumbnail(e) {
+    this.setState({
+      mobThumbnail: e.target.value
     });
   }
 
@@ -160,7 +168,8 @@ class Content extends React.Component {
       people_affected: this.state.people_affected,
       span_area: this.state.span_area,
       is_active: true,
-      imgsrc: this.state.imgsrc
+      imgsrc: this.state.imgsrc,
+      mobThumbnail: this.state.mobThumbnail
     };
 
     console.log(disaster);
@@ -290,6 +299,15 @@ class Content extends React.Component {
                   className="form-control"
                   value={this.state.imgsrc}
                   onChange={this.onChangeimage}
+                />
+              </div>
+              <div className="form-group m-3">
+                <label>Image</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.mobThumbnail}
+                  onChange={this.onChangeMobThumbnail}
                 />
               </div>
               <div className="form-group m-3">
