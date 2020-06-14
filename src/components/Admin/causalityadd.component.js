@@ -112,7 +112,7 @@ class Content extends React.Component {
               />
             </div>
             <div className="form-group m-3">
-              <label> Servide Required</label>
+              <label> Service Required</label>
               <input
                 type="text"
                 className="form-control"
