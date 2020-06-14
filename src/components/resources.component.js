@@ -117,6 +117,7 @@ export default class Resources extends React.Component {
         <input type="checkbox" value="Female" name="gender" /> Food <br></br>
         <input type="checkbox" value="Other" name="gender" /> Clothing <br></br>
         <input type="checkbox" value="Other" name="gender" /> Medicine <br></br>
+        <input type="checkbox" value="Other" name="gender" /> Toiletries <br></br>
         <input type="checkbox" value="Other" name="gender" /> Kitchen utensil <br></br>
         <input type="checkbox" value="Other" name="gender" /> other <br></br>
 
