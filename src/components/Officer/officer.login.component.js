@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { Form, Button, Row, Col } from "react-bootstrap";
 import "../styles.css";
+import { Link } from "react-router-dom";
 
 export default class OfficerLogin extends Component {
   render() {
@@ -43,10 +44,11 @@ export default class OfficerLogin extends Component {
                 </label>
               </div>
             </div>
-
-            <button type="submit" className="btn btn-primary btn-block">
-              Sign in
-            </button>
+            <Link to="/camp-officer-home">
+              <button type="submit" className="btn btn-primary btn-block">
+                Sign in
+              </button>
+            </Link>
             <p className="forgot-password text-right">
               Forgot <a href="forgotpassword">password?</a>
             </p>

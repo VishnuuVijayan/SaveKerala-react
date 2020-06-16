@@ -30,6 +30,7 @@ import Resources from "./components/resources.component";
 import Camp from "./components/camp.component";
 import Supply from "./components/releif.component";
 import Next from "./components/next.component";
+import CampOfficerDashboard from "./components/Officer/dashboard/Dashboard";
 
 class App extends Component {
   componentDidMount() {
@@ -42,6 +43,11 @@ class App extends Component {
           <Router>
             <Navbar />
             <Route path="/" exact component={Home} />
+            <Route
+              path="/camp-officer-home"
+              exact
+              component={CampOfficerDashboard}
+            />
             <Route path="/disasterdetails" exact component={Details} />
             <Route path="/login" exact component={UserLogin} />
             <Route path="/user-login" exact component={VolunteerLogin} />
@@ -86,9 +92,8 @@ class App extends Component {
             />
             <Route path="/resources-details" exact component={Resources} />
             <Route path="/camp-details" exact component={Camp} />
-          <Route path="/next-details" exact component={Next} />
-          <Route path="/supply-details" exact component={Supply} />
-
+            <Route path="/next-details" exact component={Next} />
+            <Route path="/supply-details" exact component={Supply} />
           </Router>
         </div>
       </Provider>
