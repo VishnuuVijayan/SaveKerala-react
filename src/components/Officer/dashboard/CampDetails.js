@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
+import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
@@ -51,100 +52,105 @@ export default function CampDetails() {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="MES College of Engineering"
-        subheader="Kuttippuram, Kerala"
-      />
-      <CardMedia
-        className={classes.media}
-        image={data.image}
-        title={data.campName}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Camp Number : #xxx
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <UpdateIcon />
-        </IconButton>
-        <a href={data.location}>
-          <IconButton aria-label="share">
-            <LocationOnIcon />
-          </IconButton>
-        </a>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+    <Container>
+      <Typography variant="h4" style={{ marginBottom: 30 }}>
+        Camp Details
+      </Typography>
+      <Card className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              R
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="MES College of Engineering"
+          subheader="Kuttippuram, Kerala"
+        />
+        <CardMedia
+          className={classes.media}
+          image={data.image}
+          title={data.campName}
+        />
         <CardContent>
-          <Typography display="inline">Camp ID:</Typography>
-          <Typography display="inline"> {"#" + data.campId}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">Camp Name:</Typography>
-          <Typography display="inline">{data.campName}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">District:</Typography>
-          <Typography display="inline"> {data.district}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">State:</Typography>
-          <Typography display="inline"> {data.state}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">Contact:</Typography>
-          <Typography display="inline"> {data.contact}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">Maximum Occupancy:</Typography>
-          <Typography display="inline"> {data.maxOccupancy}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">Current Occupancy:</Typography>
-          <Typography display="inline"> {data.currentOccupancy}</Typography>
-        </CardContent>
-        <CardContent>
-          <Typography display="inline">Requirements:</Typography>
-          <Typography display="inline">
-            <Button
-              style={{ textTransform: "none", marginLeft: 20 }}
-              color="primary"
-              variant="contained"
-            >
-              View Requirements
-            </Button>
-            <Button
-              style={{ marginLeft: 20, textTransform: "none" }}
-              color="primary"
-              variant="contained"
-            >
-              Update Requirements
-            </Button>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Camp Number : #xxx
           </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <UpdateIcon />
+          </IconButton>
+          <a href={data.location}>
+            <IconButton aria-label="share">
+              <LocationOnIcon />
+            </IconButton>
+          </a>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography display="inline">Camp ID:</Typography>
+            <Typography display="inline"> {"#" + data.campId}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">Camp Name:</Typography>
+            <Typography display="inline">{data.campName}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">District:</Typography>
+            <Typography display="inline"> {data.district}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">State:</Typography>
+            <Typography display="inline"> {data.state}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">Contact:</Typography>
+            <Typography display="inline"> {data.contact}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">Maximum Occupancy:</Typography>
+            <Typography display="inline"> {data.maxOccupancy}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">Current Occupancy:</Typography>
+            <Typography display="inline"> {data.currentOccupancy}</Typography>
+          </CardContent>
+          <CardContent>
+            <Typography display="inline">Requirements:</Typography>
+            <Typography display="inline">
+              <Button
+                style={{ textTransform: "none", marginLeft: 20 }}
+                color="primary"
+                variant="contained"
+              >
+                View Requirements
+              </Button>
+              <Button
+                style={{ marginLeft: 20, textTransform: "none" }}
+                color="primary"
+                variant="contained"
+              >
+                Update Requirements
+              </Button>
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </Container>
   );
 }

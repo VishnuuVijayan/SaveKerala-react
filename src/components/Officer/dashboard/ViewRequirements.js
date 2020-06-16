@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { Container } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -50,6 +50,9 @@ export default function CustomizedTables() {
 
   return (
     <Container>
+      <Typography variant="h4" style={{ marginBottom: 30 }}>
+        View Requirements
+      </Typography>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>

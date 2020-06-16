@@ -40,9 +40,7 @@ export default function FormPropsTextFields() {
         <div>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography
-                style={{ fontSize: 50, fontWeight: 400, letterSpacing: 2 }}
-              >
+              <Typography variant="h4" style={{ marginBottom: 30 }}>
                 Update Camp Details
               </Typography>
             </Grid>

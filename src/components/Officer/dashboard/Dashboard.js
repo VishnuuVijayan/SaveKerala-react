@@ -2,6 +2,16 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PeopleIcon from "@material-ui/icons/People";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import SettingsIcon from "@material-ui/icons/Settings";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,11 +31,11 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import UpdateCampDetails from "./UpdateCampDetails";
 import CampDetails from "./CampDetails";
-// // import Chart from './Chart';
-// import Deposits from "./Deposits";
-// import Orders from "./Orders";
+import Button from "@material-ui/core/Button";
+import { Link as Route } from "react-router-dom";
 import ViewRequirements from "./ViewRequirements";
 import UpdateRequirements from "./UpdateRequirements";
+import Settings from "./Settings";
 
 function Copyright() {
   return (
@@ -122,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard() {
+  const [section, setSection] = React.useState(0);
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -166,6 +177,9 @@ export default function Dashboard() {
               <NotificationsIcon />
             </Badge>
           </IconButton>
+          <Route to="/">
+            <Button style={{ color: "#fff" }}>Logout</Button>
+          </Route>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,7 +195,38 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <List>
+          <ListItem button onClick={() => setSection(0)}>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Camp Details" />
+          </ListItem>
+          <ListItem button onClick={() => setSection(1)}>
+            <ListItemIcon>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Update Camp Details" />
+          </ListItem>
+          <ListItem button onClick={() => setSection(2)}>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="View Requirements" />
+          </ListItem>
+          <ListItem button onClick={() => setSection(3)}>
+            <ListItemIcon>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Update Requirements" />
+          </ListItem>
+          <ListItem button onClick={() => setSection(4)}>
+            <ListItemIcon>
+              <SettingsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
+        </List>
         <Divider />
         {/* <List>{secondaryListItems}</List> */}
       </Drawer>
@@ -189,30 +234,18 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* <UpdateRequirements /> */}
-            <ViewRequirements/>
-            {/* Chart */}
-            {/* <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid> */}
-            {/* Recent Deposits */}
-            {/* <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid> */}
-            {/* Recent Orders */}
-            {/* <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid> */}
+            {section === 0 ? (
+              <CampDetails />
+            ) : section === 1 ? (
+              <UpdateCampDetails />
+            ) : section === 2 ? (
+              <ViewRequirements />
+            ) : section === 3 ? (
+              <UpdateRequirements />
+            ) : section === 4 ? (
+              <Settings />
+            ) : null}
           </Grid>
-          {/* <Box pt={4}>
-            <Copyright />
-          </Box> */}
         </Container>
       </main>
     </div>
