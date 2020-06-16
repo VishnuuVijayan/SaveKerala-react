@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { Typography } from "@material-ui/core";
+import { Typography, Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,165 +35,203 @@ export default function FormPropsTextFields() {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography
-              style={{ fontSize: 50, fontWeight: 400, letterSpacing: 2 }}
-            >
-              Update Camp Details
-            </Typography>
-          </Grid>
-          <Grid item xs={12} lg={4}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">Camp ID</InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.campId}
-                // value={values.amount}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} lg={8}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">
-                Camp Name
-              </InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.campName}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl
-              fullWidth
-              className={classes.formControl}
-              variant="filled"
-            >
-              <InputLabel id="demo-simple-select-label">District</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={district}
-                onChange={handleChange}
+    <Container>
+      <form className={classes.root} noValidate autoComplete="off">
+        <div>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography
+                style={{ fontSize: 50, fontWeight: 400, letterSpacing: 2 }}
               >
-                {districts.map((item) => {
-                  return <MenuItem value={item}>{item}</MenuItem>;
-                })}
-              </Select>
-            </FormControl>
+                Update Camp Details
+              </Typography>
+            </Grid>
+            <Grid item xs={12} lg={4}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Camp ID
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.campId}
+                  // value={values.amount}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} lg={8}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Camp Name
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.campName}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl
+                fullWidth
+                className={classes.formControl}
+                variant="filled"
+              >
+                <InputLabel id="demo-simple-select-label">District</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={district}
+                  onChange={handleChange}
+                >
+                  {districts.map((item) => {
+                    return <MenuItem value={item}>{item}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">State</InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.state}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={2}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Maximum Occupancy
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.maxOccupancy}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={2}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Current Occupancy
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.currentOccupancy}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={2}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Contact
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.contact}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={10}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Image Link
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.image}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl
+                fullWidth
+                className={classes.margin}
+                variant="filled"
+              >
+                <InputLabel htmlFor="filled-adornment-amount">
+                  Location src
+                </InputLabel>
+                <FilledInput
+                  id="filled-adornment-amount"
+                  value={data.location}
+                  // onChange={handleChange("amount")}
+                  // startAdornment={
+                  //   <InputAdornment position="start">$</InputAdornment>
+                  // }
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} align="center" style={{ marginTop: 30 }}>
+              <Button
+                variant="contained"
+                style={{
+                  width: 200,
+                  backgroundColor: "#23395d",
+                  color: "#fff",
+                  textTransform: "none"
+                }}
+              >
+                Update Camp Details
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">State</InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.state}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">
-                Maximum Occupancy
-              </InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.maxOccupancy}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">
-                Current Occupancy
-              </InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.currentOccupancy}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={2}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">Contact</InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.contact}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={10}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">
-                Image Link
-              </InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.image}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12}>
-            <FormControl fullWidth className={classes.margin} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">
-                Location src
-              </InputLabel>
-              <FilledInput
-                id="filled-adornment-amount"
-                value={data.location}
-                // onChange={handleChange("amount")}
-                // startAdornment={
-                //   <InputAdornment position="start">$</InputAdornment>
-                // }
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} align="center" style={{ marginTop: 30 }}>
-            <Button
-              variant="contained"
-              style={{
-                width: 200,
-                backgroundColor: "#23395d",
-                color: "#fff",
-                textTransform: "none"
-              }}
-            >
-              Update Camp Details
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
-    </form>
+        </div>
+      </form>
+    </Container>
   );
 }

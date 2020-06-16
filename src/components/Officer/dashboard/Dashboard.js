@@ -24,6 +24,8 @@ import CampDetails from "./CampDetails";
 // // import Chart from './Chart';
 // import Deposits from "./Deposits";
 // import Orders from "./Orders";
+import ViewRequirements from "./ViewRequirements";
+import UpdateRequirements from "./UpdateRequirements";
 
 function Copyright() {
   return (
@@ -187,7 +189,7 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <UpdateCampDetails />
+            <UpdateRequirements />
             {/* Chart */}
             {/* <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
