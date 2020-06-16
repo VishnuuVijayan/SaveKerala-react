@@ -13,3 +13,22 @@ export const data = {
   image:
     "https://images.static-collegedunia.com/public/college_data/images/campusimage/14417826681.jpg"
 };
+
+export const districts = [
+  "Kasaragod",
+  "Kannur",
+  "Kozhikode",
+  "Wayanad",
+  "Malappuram",
+  "Palakkad",
+  "Thrissur",
+  "Ernakulam",
+  "Idukki",
+  "Pathanamthitta",
+  "Alappuzha",
+  "Kottayam",
+  "Kollam",
+  "Thiruvanthapuram"
+];
+
+export const states = "Kerala, IN";

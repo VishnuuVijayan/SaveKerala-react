@@ -21,8 +21,7 @@ import { data } from "./data";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "80%",
-    alignSelf: "center"
+    width: "80%"
   },
   media: {
     height: 0,
