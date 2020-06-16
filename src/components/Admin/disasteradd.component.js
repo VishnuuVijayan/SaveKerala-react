@@ -302,7 +302,7 @@ class Content extends React.Component {
                 />
               </div>
               <div className="form-group m-3">
-                <label>Image</label>
+                <label>App thumbnail</label>
                 <input
                   type="text"
                   className="form-control"
